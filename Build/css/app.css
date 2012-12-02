@@ -25,7 +25,7 @@ body {
   left: 0;
   position: absolute;
   right: 0;
-  top: 0; }
+  top: 41px; }
   .map .map-google-map-container {
     position: relative;
     height: 100%;
