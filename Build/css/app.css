@@ -21,9 +21,12 @@ body {
     margin: 0; }
 
 .map {
-  height: 400px;
-  position: relative;
-  width: 100%; }
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0; }
   .map .map-google-map-container {
+    position: relative;
     height: 100%;
     width: 100%; }
