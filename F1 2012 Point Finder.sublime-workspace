@@ -332,15 +332,6 @@
 			}
 		},
 		{
-			"file": "js/app.js",
-			"settings":
-			{
-				"buffer_size": 6477,
-				"line_ending": "Unix",
-				"name": "function"
-			}
-		},
-		{
 			"file": "includes/navigation.html",
 			"settings":
 			{
@@ -473,6 +464,7 @@
 	},
 	"file_history":
 	[
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/app.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/app.scss",
 		"/Users/Wills/Downloads/photoshop-google-maps-tile-cutter-master/example/index.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/navigation.html",
@@ -599,8 +591,7 @@
 		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/public_education_next.html",
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/aggregations/Config.js",
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/less/collections.less",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/slideshow/SlideManager.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/pages/MyGalleryUpdatePage.js"
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/slideshow/SlideManager.js"
 	],
 	"find":
 	{
@@ -803,7 +794,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -836,34 +827,6 @@
 				},
 				{
 					"buffer": 1,
-					"file": "js/app.js",
-					"settings":
-					{
-						"buffer_size": 6477,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5636,
-								5648
-							]
-						],
-						"settings":
-						{
-							"auto_name": "function",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3471.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "includes/navigation.html",
 					"settings":
 					{
