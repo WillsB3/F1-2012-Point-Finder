@@ -4,6 +4,86 @@
 		"selected_items":
 		[
 			[
+				"gam",
+				"gameY"
+			],
+			[
+				"gmas",
+				"gmapsY"
+			],
+			[
+				"off",
+				"offsetX"
+			],
+			[
+				"offset",
+				"offsetX"
+			],
+			[
+				"offet",
+				"offsetY"
+			],
+			[
+				"gmap",
+				"gmapsX"
+			],
+			[
+				"direc",
+				"directionY"
+			],
+			[
+				"dire",
+				"directionX"
+			],
+			[
+				"kn",
+				"knownX"
+			],
+			[
+				"gma",
+				"gmapsX"
+			],
+			[
+				"of",
+				"offsetAvg"
+			],
+			[
+				"diff",
+				"diffY"
+			],
+			[
+				"gm",
+				"gmapsX"
+			],
+			[
+				"dis",
+				"disableCalibration"
+			],
+			[
+				"scal",
+				"scaleAvg"
+			],
+			[
+				"sca",
+				"scaleY"
+			],
+			[
+				"simed",
+				"simedDeltaX"
+			],
+			[
+				"circ",
+				"circuitName"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"MAPC",
+				"MAP_CONFIG"
+			],
+			[
 				"up",
 				"updateUrl"
 			],
@@ -238,22 +318,59 @@
 			[
 				"dur",
 				"duration"
-			],
-			[
-				"fun",
-				"fun	Function"
 			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1758,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 6477,
+				"line_ending": "Unix",
+				"name": "function"
+			}
+		},
+		{
+			"file": "includes/navigation.html",
+			"settings":
+			{
+				"buffer_size": 1643,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 71.0,
+		"height": 181.0,
 		"selected_items":
 		[
+			[
+				"convert",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"conver",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"tabs",
+				"Indentation: Convert to Tabs"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
 			[
 				"blame",
 				"Git: Blame"
@@ -356,6 +473,16 @@
 	},
 	"file_history":
 	[
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/app.scss",
+		"/Users/Wills/Downloads/photoshop-google-maps-tile-cutter-master/example/index.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/navigation.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/footer.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/bootstrap-responsive.css",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/bootstrap.css",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/_includes/Navigation.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/scss/app.scss",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/sass/app.scss",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/sass/app.sass",
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/less/home.less",
 		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/includes/js_tpl/homepage-accordion-default-itemtemplate.html",
 		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/includes/js_tpl/homepage-accordion-newcontent-itemtemplate.html",
@@ -473,17 +600,7 @@
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/aggregations/Config.js",
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/less/collections.less",
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/slideshow/SlideManager.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/pages/MyGalleryUpdatePage.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/MicroscopeView.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/routers/ArtistSubRouter.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/aggregations/RowManager.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/aggregations/RowView.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/libs/jquery.jscrollpane.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/MainScrollingView.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/artist_list.html",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/libs/underscore.js",
-		"/Users/Wills/Library/Application Support/Sublime Text 2/Packages/Theme - Wills/Monokai - John O Nolan.tmTheme",
-		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/room_detail.html"
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/pages/MyGalleryUpdatePage.js"
 	],
 	"find":
 	{
@@ -491,7 +608,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 98.0,
 		"where_history":
 		[
 			"/Users/Wills/Sites/Projects/Potato/gap2/static/,-libs/*,-_generated_media/*,-/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/views/*",
@@ -535,6 +652,17 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"calibrate",
+			"calibrationPoints",
+			"scale",
+			"CIRCUITS",
+			"CALIBRATING",
+			"maxZoom",
+			"getTileUrl",
+			"blankTilePath",
+			"repeat",
+			"CoordMapType",
+			"container",
 			"deb",
 			"thisUI",
 			"this.accord",
@@ -651,18 +779,7 @@
 			"onFilterRemoved",
 			"currentFilterEl",
 			"onFilterSet",
-			"resetFilter",
-			"logo",
-			"topfilter:closing",
-			"this.hide",
-			"debugger",
-			"debugg",
-			"trackMuseumLinkClick",
-			"content-block-content",
-			"update",
-			"trackevent",
-			"self",
-			"this.artwork"
+			"resetFilter"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -686,8 +803,92 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1758,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								929,
+								929
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/app.js",
+					"settings":
+					{
+						"buffer_size": 6477,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5636,
+								5648
+							]
+						],
+						"settings":
+						{
+							"auto_name": "function",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3471.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "includes/navigation.html",
+					"settings":
+					{
+						"buffer_size": 1643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1581,
+								1581
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -744,6 +945,22 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"nav",
+				"includes/navigation.html"
+			],
+			[
+				"footer",
+				"includes/footer.html"
+			],
+			[
+				"nagi",
+				"includes/navigation.html"
+			],
+			[
+				"bootstra",
+				"css/bootstrap-responsive.css"
+			],
 			[
 				"homepages",
 				"static/js/public/routers/HomePageSubRouter.js"
@@ -1239,22 +1456,6 @@
 			[
 				"main.css",
 				"static/cms/css/main.css"
-			],
-			[
-				"main.le",
-				"static/less/main.less"
-			],
-			[
-				"artists",
-				"static/less/artists.less"
-			],
-			[
-				"aggre",
-				"static/less/aggregation.less"
-			],
-			[
-				"application.",
-				"static/js/public/refactored_views/globals/Application.js"
 			]
 		],
 		"width": 0.0

@@ -54,8 +54,8 @@
 		var gmapsDeltaX = Math.abs(points[0].gmaps.x - points[1].gmaps.x);
 		var gmapsDeltaY = Math.abs(points[0].gmaps.y - points[1].gmaps.y);
 
-		var scaleX = (simedDeltaX > gmapsDeltaX) ? simedDeltaX / gmapsDeltaX : gmapsDeltaX / simedDeltaX;
-		var scaleY = (simedDeltaY > gmapsDeltaY) ? simedDeltaY / gmapsDeltaY : gmapsDeltaY / simedDeltaY;
+		var scaleX = simedDeltaX / gmapsDeltaX;
+		var scaleY = simedDeltaY / gmapsDeltaY;
 		var scaleAvg = (scaleX + scaleY) / 2;
 
 		console.log('3dSimEd Delta ('+ simedDeltaX + ', ' + simedDeltaY + ')');
@@ -163,28 +163,88 @@
 				knownCoord = knownCoord.split(' ');
 			}
 
+			// Melbourne Known location
+			// 464.928 -214.710
 			var knownX = knownCoord[0];
 			var knownY = knownCoord[1];
 
 			var gmapsX = event.ga.x * CIRCUITS.MELBOURNE.scale;
 			var gmapsY = event.ga.y * CIRCUITS.MELBOURNE.scale;
 
-			var offsetX = (knownX > gmapsX) ? knownX - gmapsX : gmapsX - knownX;
-			var offsetY = (knownY > gmapsY) ? knownY - gmapsY : gmapsY - knownY;
+			// If gmapsX < knownX then Google Map is offset left of game map
+			var directionX = gmapsX < knownX ? 1 : -1;
 
-			var offsetAvg = (Math.abs(offsetX) + Math.abs(offsetY)) / 2;
+			// If gmapsY < knownY then Google Map is offset above of game map
+			var directionY = gmapsY < knownY ? -1 : 1;
 
-			console.log('offsetX:   ' + offsetX);
-			console.log('offsetY:   ' + offsetY);
-			console.log('offsetAvg: ' + offsetAvg);
+			// Red and white stripe box at -383.613 -96.137
 
-			CIRCUITS.MELBOURNE.offset = offsetX && offsetY > 0 ? offsetAvg : -offsetAvg;
+			var xa, xb;
+			var ya, yb;
+
+			if (gmapsX > knownX) {
+				xa = gmapsX;
+				xb = knownX;
+			} else {
+				xa = knownX;
+				xb = gmapsX;
+			}
+
+			if (gmapsY > knownY) {
+				ya = gmapsY;
+				yb = knownY;
+			} else {
+				ya = knownY;
+				yb = gmapsY;
+			}
+
+			var offsetX = directionX * (xa - xb);
+			var offsetY = directionY * (ya - yb);
+
+			console.log('diffX: ' + offsetX);
+			console.log('diffY: ' + offsetY);
+
+			CIRCUITS.MELBOURNE.offsetX = offsetX;
+			CIRCUITS.MELBOURNE.offsetY = offsetY;
 
 			disableCalibration();
 		} else {
-			var x = (event.ga.x * CIRCUITS.MELBOURNE.scale) + CIRCUITS.MELBOURNE.offset;
-			var y = (event.ga.y * CIRCUITS.MELBOURNE.scale) + CIRCUITS.MELBOURNE.offset;
-			console.log("x " + x + " y " + y);
+			debugger
+			var signX = event.ga.x > 0 ? 1 : -1;
+			var signY = event.ga.y > 0 ? 1 : -1;
+
+			var gmapsX = signX * (event.ga.x * CIRCUITS.MELBOURNE.scale);
+			var gmapsY = signY * (event.ga.y * CIRCUITS.MELBOURNE.scale);
+			var offsetX = CIRCUITS.MELBOURNE.offsetX;
+			var offsetY = CIRCUITS.MELBOURNE.offsetY;
+
+			var xa, xb;
+			var ya, yb;
+
+			if (gmapsX > offsetX) {
+				xa = gmapsX;
+				xb = offsetX;
+			} else {
+				xa = offsetX;
+				xb = gmapsX;
+			}
+
+			if (gmapsY > offsetY) {
+				ya = gmapsY;
+				yb = offsetY;
+			} else {
+				ya = offsetY;
+				yb = gmapsY;
+			}
+
+			var diffX = xa - xb;
+			var diffY = ya - yb;
+
+			var gameX = gmapsX + offsetX;
+			var gameY = gmapsY + offsetY;
+
+			console.log("World Coordinate (" + event.ga.x + ', ' + event.ga.y + ")");
+			console.log("Computed Game Coordinate (" + gameX + ', ' + gameY + ")");
 		}
 	});
 
