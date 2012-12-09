@@ -26,7 +26,7 @@
 
 		contractSearchField: function (evnt) {
 			this.elements.$searchField.css({
-				width: 'auto'
+				width: '183px'
 			});
 		},
 

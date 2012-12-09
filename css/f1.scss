@@ -1,6 +1,7 @@
 /********************************/
 /**   F1 2012 Point Finder     **/
 /********************************/
+@import "bourbon/_bourbon.scss";
 
 //////////////////////////////////
 // Base Styles
@@ -87,7 +88,7 @@ body {
 		}
 
 		input {
-			transition:
+			@include transition (width 0.25s ease-in-out);
 			height: 100%;
 			margin: 0;
 			padding-left: 27px;
