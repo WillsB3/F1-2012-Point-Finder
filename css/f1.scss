@@ -72,6 +72,33 @@ body {
 		margin: 0;
 		vertical-align: baseline;
 	}
+
+	.circuit-selector-search {
+		display: block;
+		float: right;
+		height: 30px;
+		margin: 0;
+		position: relative;
+
+		i {
+			margin: -7px 0 0 7px;
+			position: absolute;
+			top: 50%;
+		}
+
+		input {
+			transition:
+			height: 100%;
+			margin: 0;
+			padding-left: 27px;
+		}
+	}
+
+	.circuit-selector-search:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
 }
 
 //////////////////////////////////
