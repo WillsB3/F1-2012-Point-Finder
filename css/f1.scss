@@ -92,6 +92,7 @@ body {
 			height: 100%;
 			margin: 0;
 			padding-left: 27px;
+			width: 400px;
 		}
 	}
 
@@ -100,6 +101,34 @@ body {
 		display: table;
 		clear: both;
 	}
+}
+
+.pac-container {
+	box-sizing: content-box;
+	@include border-bottom-radius(5px);
+	border-color: rgba(82, 168, 236, 0.8);
+
+	-webkit-box-shadow: 0 4px 8px rgba(82, 168, 236, 0.6);
+	-moz-box-shadow: 0 4px 8px rgba(82, 168, 236, 0.6);
+	box-shadow: 0 4px 8px rgba(82, 168, 236, 0.6);
+
+	border-top: none;
+	margin-top: -3px;
+	padding: 13px 0 0 0;
+
+	.pac-item {
+		padding: 5px 20px;
+	}
+
+	.pac-item:hover {
+		background-color: rgba(82, 168, 236, 0.15);
+	}
+}
+
+.pac-container::after {
+
+	margin-top: 20px;
+	padding: 10px 15px 0 0;
 }
 
 //////////////////////////////////
