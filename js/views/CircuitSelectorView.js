@@ -60,7 +60,8 @@
 		circuitSelected: function (evnt) {
 			var circuit,
 				latLng,
-				selectedCircuitId = $(evnt.currentTarget).val();
+				selectedCircuitId = $(evnt.currentTarget).val(),
+				zoomLevel;
 
 			// Obtain the correct circuit config object
 			circuit = _.find(f1.circuits, function (circuit) {
@@ -74,7 +75,8 @@
 			this.options.map.panTo(latLng);
 
 			// Zoom to roughly the correct level
-			this.options.map.setZoom(16);
+			zoomLevel = circuit.mapCenter.zoom || 16;
+			this.options.map.setZoom(zoomLevel);
 		},
 
 		placeSelected: function (evnt) {

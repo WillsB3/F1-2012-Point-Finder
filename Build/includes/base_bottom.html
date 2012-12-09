@@ -11,10 +11,10 @@
 		<script src="js/vendor/backbone.js"></script>
 
 		<!-- Google maps API -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false&libraries=places" type="text/javascript"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false&libraries=places"></script>
 
 		<!-- Include Javascript templates -->
-		<script id="header-template" type="text/template">
+		<script type="text/template" id="header-template">
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 </script>
-<script id="circuit-selector-template" type="text/template">
+<script type="text/template" id="circuit-selector-template">
 	<label for="circuit-selector">Circuit</label>
 	<select class="circuit-selector-select" id="circuit-selector">
 		<%
