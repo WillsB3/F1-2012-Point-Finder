@@ -11,7 +11,7 @@
 		<script src="js/vendor/backbone.js"></script>
 
 		<!-- Google maps API -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false&libraries=places" type="text/javascript"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false&libraries=places"></script>
 
 		<!-- Include Javascript templates -->
 		<script id="header-template" type="text/template">
@@ -33,8 +33,8 @@
 	</div>
 </script>
 <script id="circuit-selector-template" type="text/template">
-	<label for="circuit_selector">Circuit</label>
-	<select id="circuit_selector">
+	<label for="circuit-selector">Circuit</label>
+	<select class="circuit-selector-select" id="circuit-selector">
 		<%
 			_.each(circuits, function(circuit) {
 				%>

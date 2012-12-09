@@ -17,7 +17,7 @@
 				mapOptions = {
 					zoom: 8,
 					center: new google.maps.LatLng(-34.397, 150.644),
-					mapTypeId: google.maps.MapTypeId.ROADMAP,
+					mapTypeId: google.maps.MapTypeId.HYBRID,
 
 					mapTypeControl: true,
 					mapTypeControlOptions: {
@@ -39,7 +39,7 @@
 					scaleControl: false,
 
 					streetViewControl: false,
-						streetViewControlOptions: {
+					streetViewControlOptions: {
 						position: google.maps.ControlPosition.LEFT_CENTER
 					}
 				},
@@ -58,13 +58,18 @@
 			});
 
 			// Create and render a circuit selector
-			this.circuitSelector = new f1.views.CircuitSelector();
+			this.circuitSelector = new f1.views.CircuitSelector({
+				map: this.map
+			});
 			this.$el.append(this.circuitSelector.render().$el);
 
 			return this;
 		},
 
 		placeMarker: function (position) {
+			f1.log('Placing marker at position:');
+			f1.log(position);
+
 			var marker = new google.maps.Marker({
 				position: position,
 				map: this.map

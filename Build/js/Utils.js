@@ -25,7 +25,33 @@ var f1;
 						lng: null
 					}
 				},
+				mapCenter: {
+					lat: -37.846663684549135,
+					lng: 144.97056484222412
+				},
 				round: 1
+			},
+			{
+				id: 'sepang',
+				circuit: "Sepang International Circuit",
+				placename: "Kuala Lumpur",
+				image: "melbourne.jpg",
+				bounds: {
+					NW: {
+						lat: null,
+						lng: null
+					},
+
+					SE: {
+						lat: null,
+						lng: null
+					}
+				},
+				mapCenter: {
+					lat: 2.7603622912363823,
+					lng: 101.73752903938293
+				},
+				round: 2
 			}
 		],
 

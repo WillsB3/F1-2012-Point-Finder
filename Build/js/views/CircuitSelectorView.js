@@ -10,15 +10,18 @@
 			$searchField: null
 		},
 
+		searchMarkers: [],
+
 		events: {
 			'focus .search-field': 'expandSearchField',
 			'blur .search-field': 'contractSearchField',
-			'submit .circuit-selector-search': 'preventDefaultFormBehaviour'
+			'submit .circuit-selector-search': 'preventDefaultFormBehaviour',
+			'change .circuit-selector-select': 'circuitSelected'
 		},
 
 		initialize: function () {
 			f1.log('CircuitSelector:initalize');
-			_.bindAll(this, 'contractSearchField', 'expandSearchField', 'onSearchInputBlur');
+			_.bindAll(this, 'placeSelected', 'contractSearchField', 'expandSearchField', 'placeSelected', 'onSearchInputBlur');
 
 			return this;
 		},
@@ -49,19 +52,79 @@
 			// Cache required elements
 			this.elements.$searchField = this.$el.find('input.search-field');
 
-			// Initialise the search box
-			this.searchBox = new google.maps.places.SearchBox(this.elements.$searchField[0]);
-
-			// Blur the search form on click of other UI elements
-			$('body').on('click', this.onSearchInputBlur);
+			this.setupSearchBox();
 
 			return this;
+		},
+
+		circuitSelected: function (evnt) {
+			var circuit,
+				latLng,
+				selectedCircuitId = $(evnt.currentTarget).val();
+
+			// Obtain the correct circuit config object
+			circuit = _.find(f1.circuits, function (circuit) {
+				return circuit.id === selectedCircuitId;
+			});
+
+			// Create a google LatLng object at the circuits center
+			latLng = new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng);
+
+			// Center the map on the selected circuits location
+			this.options.map.panTo(latLng);
+
+			// Zoom to roughly the correct level
+			this.options.map.setZoom(16);
+		},
+
+		placeSelected: function (evnt) {
+			var places = this.searchBox.getPlaces(),
+				bounds = new google.maps.LatLngBounds(),
+				image,
+				marker;
+
+			// Remove existing markers
+			_.each(this.searchMarkers, function (marker) {
+				marker.setMap(null);
+			});
+			this.searchMarkes = [];
+
+			// Add new markers
+			for (var i = 0, place; place = places[i]; i++) {
+				image = new google.maps.MarkerImage(
+					place.icon, new google.maps.Size(71, 71),
+					new google.maps.Point(0, 0), new google.maps.Point(17, 34),
+					new google.maps.Size(25, 25)
+				);
+
+				marker = new google.maps.Marker({
+					map: this.options.map,
+					icon: image,
+					title: place.name,
+					position: place.geometry.location
+				});
+
+				this.searchMarkers.push(marker);
+				bounds.extend(place.geometry.location);
+			}
+
+			this.options.map.fitBounds(bounds);
 		},
 
 		onSearchInputBlur: function (evnt) {
 			if (evnt.target !== this.elements.$searchField[0]) {
 				this.elements.$searchField.trigger('blur');
 			}
+		},
+
+		setupSearchBox: function (evnt) {
+			// Initialise the search box
+			this.searchBox = new google.maps.places.SearchBox(this.elements.$searchField[0]);
+
+			// Blur the search form on click of other UI elements
+			$('body').on('click', this.onSearchInputBlur);
+
+			google.maps.event.addListener(this.searchBox, 'places_changed', this.placeSelected);
 		},
 
 		close: function () {
