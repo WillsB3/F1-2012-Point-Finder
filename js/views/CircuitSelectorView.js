@@ -16,10 +16,9 @@
 			'submit .circuit-selector-search': 'preventDefaultFormBehaviour'
 		},
 
-		initalize: function () {
+		initialize: function () {
 			f1.log('CircuitSelector:initalize');
-
-			_.bindAll(this, 'contractSearchField', 'expandSearchField');
+			_.bindAll(this, 'contractSearchField', 'expandSearchField', 'onSearchInputBlur');
 
 			return this;
 		},
@@ -53,11 +52,20 @@
 			// Initialise the search box
 			this.searchBox = new google.maps.places.SearchBox(this.elements.$searchField[0]);
 
+			// Blur the search form on click of other UI elements
+			$('body').on('click', this.onSearchInputBlur);
+
 			return this;
 		},
 
-		close: function () {
+		onSearchInputBlur: function (evnt) {
+			if (evnt.target !== this.elements.$searchField[0]) {
+				this.elements.$searchField.trigger('blur');
+			}
+		},
 
+		close: function () {
+			$('body').off('click', this.onSearchInputBlur);
 		}
 	});
 }());
