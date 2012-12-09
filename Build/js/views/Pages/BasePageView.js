@@ -3,8 +3,7 @@
 	"use strict";
 	f1.pages.BasePageView = Backbone.View.extend({
 
-		id: 'app',
-		className: '',
+		className: 'l-page',
 
 		contentPaneClasses: [],
 		navigationIdentifier: '',

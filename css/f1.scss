@@ -28,10 +28,30 @@ body {
 	top: 41px;
 }
 
+.l-page {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
 //////////////////////////////////
 // Modules Styles
 //////////////////////////////////
+.circuit-map {
+	height: 100%;
+	width: 100%;
 
+	label {
+		display: inline !important;
+		width: auto !important;
+	}
+
+	img {
+		max-width: none !important;
+	}
+}
 
 //////////////////////////////////
 // State Styles
