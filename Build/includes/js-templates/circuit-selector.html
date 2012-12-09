@@ -1,0 +1,12 @@
+<script type="text/template" id="circuit-selector-template">
+	<label for="circuit_selector">Circuit</label>
+	<select id="circuit_selector">
+		<%
+			_.each(circuits, function(circuit) {
+				%>
+					<option value="<%= circuit.id %>"><%= circuit.placename %></option>
+				<%
+		 	})
+		 %>
+	</select>
+</script>

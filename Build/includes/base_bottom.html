@@ -11,7 +11,7 @@
 		<script src="js/vendor/backbone.js"></script>
 
 		<!-- Google maps API -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false" type="text/javascript"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALArgzfWqunGimN96M5pz371mQKfGDeQg&sensor=false"></script>
 
 		<!-- Include Javascript templates -->
 		<script type="text/template" id="header-template">
@@ -32,6 +32,18 @@
 		</div>
 	</div>
 </script>
+<script type="text/template" id="circuit-selector-template">
+	<label for="circuit_selector">Circuit</label>
+	<select id="circuit_selector">
+		<%
+			_.each(circuits, function(circuit) {
+				%>
+					<option value="<%= circuit.id %>"><%= circuit.placename %></option>
+				<%
+		 	})
+		 %>
+	</select>
+</script>
 
 		<!-- Application JS -->
 		<script src="js/Utils.js"></script>
@@ -40,6 +52,7 @@
 		<script src="js/views/Pages/CircuitBoundsFinderPage.js"></script>
 
 		<script src="js/views/HeaderView.js"></script>
+		<script src="js/views/CircuitSelectorView.js"></script>
 		<script src="js/views/Application.js"></script>
 
 		<script src="js/Router.js"></script>

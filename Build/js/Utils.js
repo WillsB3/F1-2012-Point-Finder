@@ -8,6 +8,27 @@ var f1;
 		debugMode: true,
 		pageStartTime: new Date().getTime(),
 
+		circuits: [
+			{
+				id: 'melbourne',
+				circuit: "Albert park",
+				placename: "Melbourne",
+				image: "melbourne.jpg",
+				bounds: {
+					NW: {
+						lat: null,
+						lng: null
+					},
+
+					SE: {
+						lat: null,
+						lng: null
+					}
+				},
+				round: 1
+			}
+		],
+
 		msg: function (args, level) {
 			if (f1.debugMode && window.console) {
 				var validLogLevels = ['log', 'info', 'warn', 'error'],
