@@ -1,0 +1,19 @@
+/********************************/
+/**   F1 2012 Point Finder     **/
+/********************************/
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  background-image: url(../../img/backgrounds/nasty_fabric/nasty_fabric.png);
+  padding-top: 41px;
+  padding-bottom: 40px; }
+
+#app {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 41px; }
