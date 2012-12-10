@@ -390,22 +390,6 @@
 				"buffer_size": 2277,
 				"line_ending": "Unix"
 			}
-		},
-		{
-			"file": "js/Utils.js",
-			"settings":
-			{
-				"buffer_size": 8920,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/views/CircuitSelectorView.js",
-			"settings":
-			{
-				"buffer_size": 3474,
-				"line_ending": "Unix"
-			}
 		}
 	],
 	"build_system": "",
@@ -548,6 +532,8 @@
 	},
 	"file_history":
 	[
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/CircuitSelectorView.js",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/Utils.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js-templates/circuit-selector.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/vendor/backbone.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/bourbon/_bourbon.scss",
@@ -565,7 +551,6 @@
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/index.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/temp/Circuit Dropdown.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/temp/Circuit Dropdown",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/Utils.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/Build/includes/js-templates/nav.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/navigation.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js-templates/Navigation.html",
@@ -674,8 +659,7 @@
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/libs/backbone.js",
 		"/Users/Wills/Sites/GitHub Forks/backbone.analytics/backbone.analytics.js",
 		"/Users/Wills/Sites/GitHub Forks/backbone.analytics/tests/backbone.analytics.test.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/InlineRename.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/nginx.conf"
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/InlineRename.js"
 	],
 	"find":
 	{
@@ -683,7 +667,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 98.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/Wills/Sites/Projects/Potato/gap2/static/,-libs/*,-_generated_media/*,-/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/views/*",
@@ -878,7 +862,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1028,8 +1012,8 @@
 						"selection":
 						[
 							[
-								2111,
-								2111
+								1503,
+								1503
 							]
 						],
 						"settings":
@@ -1038,61 +1022,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1766.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "js/Utils.js",
-					"settings":
-					{
-						"buffer_size": 8920,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6992,
-								6992
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 15.0,
-						"translation.y": 4928.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "js/views/CircuitSelectorView.js",
-					"settings":
-					{
-						"buffer_size": 3474,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1939,
-								1939
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 969.0,
+						"translation.y": 838.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
