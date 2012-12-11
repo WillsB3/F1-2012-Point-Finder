@@ -4,26 +4,6 @@
 		"selected_items":
 		[
 			[
-				"sear",
-				"searchMarkers"
-			],
-			[
-				"bac",
-				"background-color"
-			],
-			[
-				"preve",
-				"preventDefaultFormBehaviour"
-			],
-			[
-				"ci",
-				"circuit-selector-search"
-			],
-			[
-				"Circuit",
-				"circuitBoundsFinder"
-			],
-			[
 				"gam",
 				"gameY"
 			],
@@ -344,50 +324,18 @@
 	"buffers":
 	[
 		{
-			"file": "includes/base_bottom.html",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1175,
+				"buffer_size": 70,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/views/Application.js",
+			"file": "js/App.js",
 			"settings":
 			{
-				"buffer_size": 1735,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/Router.js",
-			"settings":
-			{
-				"buffer_size": 626,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/views/Pages/CircuitBoundsFinderPage.js",
-			"settings":
-			{
-				"buffer_size": 2079,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/views/Pages/BasePageView.js",
-			"settings":
-			{
-				"buffer_size": 369,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/f1.scss",
-			"settings":
-			{
-				"buffer_size": 2277,
+				"buffer_size": 6477,
 				"line_ending": "Unix"
 			}
 		}
@@ -395,35 +343,19 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 375.0,
+		"height": 71.0,
 		"selected_items":
 		[
-			[
-				"reve",
-				"File: Reveal"
-			],
-			[
-				"revea",
-				"File: Reveal"
-			],
-			[
-				"rena",
-				"File: Rename"
-			],
 			[
 				"reveal",
 				"File: Reveal"
 			],
 			[
-				"reave",
-				"File: New File Relative to Current View"
-			],
-			[
-				"conver",
+				"convert",
 				"Indentation: Convert to Tabs"
 			],
 			[
-				"convert",
+				"conver",
 				"Indentation: Convert to Tabs"
 			],
 			[
@@ -532,37 +464,10 @@
 	},
 	"file_history":
 	[
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/CircuitSelectorView.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/Utils.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js-templates/circuit-selector.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/vendor/backbone.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/bourbon/_bourbon.scss",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/head.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/HeaderView.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js_templates.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/Pages/BasePageView.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/Application.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/bounds-finder.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js-templates/nav.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/base_top.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/views/Pages/CircuitBoundsFinderPage.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/vendor/bootstrap.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/circuit-bounds.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/index.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/temp/Circuit Dropdown.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/temp/Circuit Dropdown",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/Build/includes/js-templates/nav.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/navigation.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/js-templates/Navigation.html",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/Router.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/router.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/App.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/utils.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/base_bottom.html",
-		"/Users/Wills/Desktop/underscore.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 PF/app/scripts/main.js",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 PF/app/styles/main.css",
-		"/Users/Wills/Sites/Projects/Personal/F1 2012 PF/test/index.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/Build/includes/base_bottom.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/head.html",
+		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/includes/navigation.html",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/js/app.js",
 		"/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder/css/app.scss",
 		"/Users/Wills/Downloads/photoshop-google-maps-tile-cutter-master/example/index.html",
@@ -659,7 +564,34 @@
 		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/libs/backbone.js",
 		"/Users/Wills/Sites/GitHub Forks/backbone.analytics/backbone.analytics.js",
 		"/Users/Wills/Sites/GitHub Forks/backbone.analytics/tests/backbone.analytics.test.js",
-		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/InlineRename.js"
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/InlineRename.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/nginx.conf",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/BasicArtworkView.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/less/bookmarks.less",
+		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/includes/js_tpl/bookmark-details.html",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/YoutubeVideo.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/BasicBookmarkView.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/urls.py",
+		"/Users/Wills/Sites/Projects/Potato/gap2/artproject_collection/views.py",
+		"/Users/Wills/Sites/Projects/Potato/gap2/utils.py",
+		"/Users/Wills/Sites/Projects/Potato/gap2/artproject_base/utils.py",
+		"/Users/Wills/Sites/Projects/Potato/gap2/artproject_artwork/form_config.py",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/cms/css/main.css",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/less/artists.less",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/aggregations/ViewSwitcher.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/public_education_intro.html",
+		"/Users/Wills/Sites/Projects/Potato/gap2/nginx/css/mixins.css",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/ThumbnailstripView.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/libs/microscope_app.js",
+		"/Users/Wills/Downloads/microscope_test_app/microscope_app.js",
+		"/Users/Wills/Downloads/microscope_test_app/microscope_app.js~",
+		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/includes/header.html",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/collections.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/sidebar/Discover.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/globals/NavigationHeaderView.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/pages/SearchPage.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/static/js/public/refactored_views/pages/static/EducationPage.js",
+		"/Users/Wills/Sites/Projects/Potato/gap2/templates/public/public_education_next.html"
 	],
 	"find":
 	{
@@ -711,24 +643,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"Markers",
-			"markers",
-			"onPlaceSelected",
-			"map",
-			"events",
-			"self",
-			"contentPane",
-			"wild_oliva",
-			"twinkle_twinkle",
-			"shattered",
-			"dropdown-toggle",
-			"ap.",
-			"unbind:",
-			"removeListeners",
-			"ap.",
-			"msg",
-			"settigns",
-			" =",
 			"calibrate",
 			"calibrationPoints",
 			"scale",
@@ -838,7 +752,25 @@
 			".na",
 			"showUiOnMouseMove",
 			"mousemove\nmousemove",
-			"mousemove"
+			"mousemove",
+			"mousmo\nmousemov",
+			"mousmo\nmousmo",
+			"openPane",
+			"openAfterLoad",
+			"openaf",
+			"openAfterLoad",
+			"showDetails",
+			"details",
+			"detail",
+			"detailsTrigger",
+			"TODO",
+			"debugger",
+			"debug",
+			"filter:removed",
+			"onFilterRemoved",
+			"currentFilterEl",
+			"onFilterSet",
+			"resetFilter"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -862,28 +794,29 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "includes/base_bottom.html",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 1175,
+						"buffer_size": 70,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								529,
-								529
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -894,18 +827,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "js/views/Application.js",
+					"file": "js/App.js",
 					"settings":
 					{
-						"buffer_size": 1735,
+						"buffer_size": 6477,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1205,
-								1216
+								381,
+								381
 							]
 						],
 						"settings":
@@ -915,114 +848,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "js/Router.js",
-					"settings":
-					{
-						"buffer_size": 626,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								184,
-								184
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "js/views/Pages/CircuitBoundsFinderPage.js",
-					"settings":
-					{
-						"buffer_size": 2079,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								464,
-								464
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 26.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/views/Pages/BasePageView.js",
-					"settings":
-					{
-						"buffer_size": 369,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								102,
-								102
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "css/f1.scss",
-					"settings":
-					{
-						"buffer_size": 2277,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1503,
-								1503
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 838.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1084,55 +909,23 @@
 		"selected_items":
 		[
 			[
-				"backbone.js",
-				"js/vendor/backbone.js"
+				"bottom",
+				"includes/base_bottom.html"
+			],
+			[
+				"base",
+				"Build/includes/base_bottom.html"
 			],
 			[
 				"head",
 				"includes/head.html"
 			],
 			[
-				"header",
-				"js/views/HeaderView.js"
-			],
-			[
-				"uti",
-				"js/Utils.js"
-			],
-			[
-				"basepage",
-				"js/views/Pages/BasePageView.js"
-			],
-			[
-				"bootstra",
-				"js/vendor/bootstrap.js"
-			],
-			[
-				"router",
-				"js/Router.js"
-			],
-			[
-				"headev",
-				"js/views/HeaderView.js"
-			],
-			[
-				"utils",
-				"js/Utils.js"
+				"app",
+				"js/App.js"
 			],
 			[
 				"nav",
-				"includes/js-templates/nav.html"
-			],
-			[
-				"appl",
-				"js/views/Application.js"
-			],
-			[
-				"backbone",
-				"js/vendor/backbone.js"
-			],
-			[
-				"naviga",
 				"includes/navigation.html"
 			],
 			[
@@ -1142,6 +935,10 @@
 			[
 				"nagi",
 				"includes/navigation.html"
+			],
+			[
+				"bootstra",
+				"css/bootstrap-responsive.css"
 			],
 			[
 				"homepages",
@@ -1288,10 +1085,6 @@
 				"app.yaml"
 			],
 			[
-				"app",
-				"app.yaml"
-			],
-			[
 				"base.",
 				"templates/public/base.html"
 			],
@@ -1346,6 +1139,10 @@
 			[
 				"headerv",
 				"static/js/public/refactored_views/globals/HeaderView.js"
+			],
+			[
+				"basepage",
+				"static/js/public/refactored_views/globals/BasePageView.js"
 			],
 			[
 				"jquery",
@@ -1524,8 +1321,8 @@
 				"static/js/public/models.js"
 			],
 			[
-				"base",
-				"templates/public/base.html"
+				"backbone.js",
+				"static/js/libs/backbone.js"
 			],
 			[
 				"back",
@@ -1550,6 +1347,10 @@
 			[
 				"share.",
 				"static/js/public/refactored_views/sidebar/Share.js"
+			],
+			[
+				"backbone",
+				"static/js/libs/backbone.js"
 			],
 			[
 				"basepagevi",
@@ -1594,6 +1395,30 @@
 			[
 				"application",
 				"static/js/public/refactored_views/globals/Application.js"
+			],
+			[
+				"collectionviews.p",
+				"artproject_collection/views.py"
+			],
+			[
+				"artproject_collection/view",
+				"artproject_collection/views.py"
+			],
+			[
+				"utils",
+				"artproject_base/utils.py"
+			],
+			[
+				"subrouters",
+				"static/js/public/routers/SubRouterBase.js"
+			],
+			[
+				"slidesh",
+				"static/js/public/refactored_views/sidebar/Slideshow.js"
+			],
+			[
+				"urls",
+				"urls.py"
 			]
 		],
 		"width": 0.0
@@ -1605,7 +1430,7 @@
 		[
 			[
 				"",
-				"/Users/Wills/Sites/Projects/Potato/gap2-master/Google Art Project V2 - Live.sublime-project"
+				"/Users/Wills/Sites/Projects/Potato/gap2/Google Art Project.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -14,36 +14,44 @@
 
 		render: function () {
 			var map,
-				mapOptions = {
-					zoom: 8,
-					center: new google.maps.LatLng(-34.397, 150.644),
-					mapTypeId: google.maps.MapTypeId.HYBRID,
+				circuit,
+				mapOptions;
 
-					mapTypeControl: true,
-					mapTypeControlOptions: {
-						style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-						position: google.maps.ControlPosition.RIGHT_CENTER
-					},
+			circuit = _.find(f1.circuits, function (circuit) {
+				return circuit.id === 'melbourne';
+			});
 
-					panControl: true,
-					panControlOptions: {
-						position: google.maps.ControlPosition.LEFT_CENTER
-					},
+			mapOptions = {
+				zoom: circuit.mapCenter.zoom,
+				center: new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng),
+				mapTypeId: google.maps.MapTypeId.HYBRID,
 
-					zoomControl: true,
-					zoomControlOptions: {
-						style: google.maps.ZoomControlStyle.LARGE,
-						position: google.maps.ControlPosition.LEFT_CENTER
-					},
-
-					scaleControl: false,
-
-					streetViewControl: false,
-					streetViewControlOptions: {
-						position: google.maps.ControlPosition.LEFT_CENTER
-					}
+				mapTypeControl: true,
+				mapTypeControlOptions: {
+					style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+					position: google.maps.ControlPosition.RIGHT_CENTER
 				},
-				self = this;
+
+				panControl: true,
+				panControlOptions: {
+					position: google.maps.ControlPosition.LEFT_CENTER
+				},
+
+				zoomControl: true,
+				zoomControlOptions: {
+					style: google.maps.ZoomControlStyle.LARGE,
+					position: google.maps.ControlPosition.LEFT_CENTER
+				},
+
+				scaleControl: false,
+
+				streetViewControl: false,
+				streetViewControlOptions: {
+					position: google.maps.ControlPosition.LEFT_CENTER
+				}
+			};
+
+			self = this;
 
 			f1.log('CircuitBoundsFinderPage:render');
 
@@ -69,6 +77,7 @@
 		placeMarker: function (position) {
 			f1.log('Placing marker at position:');
 			f1.log(position);
+			debugger
 
 			var marker = new google.maps.Marker({
 				position: position,
