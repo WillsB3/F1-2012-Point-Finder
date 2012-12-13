@@ -62,7 +62,7 @@
 
 			// Attach the click handler
 			google.maps.event.addListener(this.map, 'click', function (e) {
-				self.placeMarker(e.latLng);
+				self.placeMarker(e);
 			});
 
 			// Create and render a circuit selector
@@ -74,10 +74,14 @@
 			return this;
 		},
 
-		placeMarker: function (position) {
+		placeMarker: function (evnt) {
+			var position = evnt.latLng;
+
 			f1.log('Placing marker at position:');
 			f1.log(position);
-			debugger
+
+			f1.log('World coordinates:');
+			f1.log(evnt.ga);
 
 			var marker = new google.maps.Marker({
 				position: position,
