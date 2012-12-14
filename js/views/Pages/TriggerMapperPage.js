@@ -15,7 +15,7 @@
 
 			// Create the drawing manager
 			this.drawingManager = new google.maps.drawing.DrawingManager();
-			drawingManager.setMap(this.map);
+			this.drawingManager.setMap(this.map);
 
 			return this;
 		}
