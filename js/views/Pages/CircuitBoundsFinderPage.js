@@ -9,7 +9,7 @@
 			return this;
 		},
 
-		renderOld: function () {
+		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
 			var self = this;
 
