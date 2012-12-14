@@ -5,12 +5,16 @@
 	f1.Router = Backbone.Router.extend({
 		routes: {
 			'calibrate/circuit-bounds.html': 'circuitBoundsFinder',
-			'': 'home'
+			'': 'mapper'
 		},
 
 		circuitBoundsFinder: function () {
 			f1.log('Router:circuitBoundsFinder');
 			f1.app.showPage('CircuitBoundsFinderPage');
+		},
+
+		mapper: function () {
+			f1.app.showPage('TriggerMapperPage');
 		}
 	});
 

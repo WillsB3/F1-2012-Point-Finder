@@ -1,19 +1,29 @@
 /*global $, f1, Backbone, _, google */
 (function () {
 	"use strict";
-	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseMapPageView.extend({
-		initialize: function () {
+	f1.pages.TriggerMapperPage = f1.pages.BaseMapPageView.extend({
+		initalize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
-			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
 
 			return this;
 		},
 
-		renderOld: function () {
+		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
-			var self = this;
+
+			var map,
+				circuit,
+				self = this;
+
+			circuit = _.find(f1.circuits, function (circuit) {
+				return circuit.id === 'melbourne';
+			});
+
 
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
+
+			// Render the Google map
+			this.map = new google.maps.Map(this.$el.find('.circuit-map')[0], this.mapOptions);
 
 			// Attach the click handler
 			google.maps.event.addListener(this.map, 'click', function (e) {
@@ -24,7 +34,6 @@
 			this.circuitSelector = new f1.views.CircuitSelector({
 				map: this.map
 			});
-
 			this.$el.append(this.circuitSelector.render().$el);
 
 			return this;
@@ -46,8 +55,12 @@
 		},
 
 		close: function () {
+			// Remove all event handlers we might have bound above
+			google.maps.event.clearInstanceListeners(this.map);
+
 			this.circuitSelector.close();
-			f1.pages.BaseMapPageView.prototype.close.apply(this);
+
+			f1.pages.BasePageView.prototype.close.apply(this);
 		}
 	});
 }());

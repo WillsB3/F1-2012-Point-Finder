@@ -27,15 +27,15 @@
 		},
 
 		contractSearchField: function (evnt) {
-			// this.elements.$searchField.css({
-			// 	width: '183px'
-			// });
+			this.elements.$searchField.css({
+				width: '183px'
+			});
 		},
 
 		expandSearchField: function (evnt) {
-			// this.elements.$searchField.css({
-			// 	width: '400px'
-			// });
+			this.elements.$searchField.css({
+				width: '400px'
+			});
 		},
 
 		preventDefaultFormBehaviour: function (evnt) {
