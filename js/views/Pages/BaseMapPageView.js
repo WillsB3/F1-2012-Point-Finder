@@ -42,6 +42,7 @@
 
 		initialize: function () {
 			f1.log('BaseMapPageView:initalize');
+			f1.pages.BasePageView.prototype.initialize.apply(this);
 
 			// Setup map options
 			this.mapOptions = _.extend({}, this.baseMapOptions, this.options.mapOptions);
@@ -60,6 +61,8 @@
 
 		render: function () {
 			f1.log('BaseMapPageView:render');
+			f1.pages.BasePageView.prototype.render.apply(this);
+
 			var mapPosition = {
 					center: new google.maps.LatLng(this.circuit.mapCenter.lat, this.circuit.mapCenter.lng),
 					zoom: this.circuit.mapCenter.zoom || 16

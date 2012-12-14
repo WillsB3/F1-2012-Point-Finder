@@ -1,7 +1,7 @@
 /*global $, f1, Backbone, _, google */
 (function () {
 	"use strict";
-	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseMapPageView.extend({
+	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseCircuitPageView.extend({
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
@@ -20,13 +20,6 @@
 				self.placeMarker(e);
 			});
 
-			// Create and render a circuit selector
-			this.circuitSelector = new f1.views.CircuitSelector({
-				map: this.map
-			});
-
-			this.$el.append(this.circuitSelector.render().$el);
-
 			return this;
 		},
 
@@ -43,11 +36,6 @@
 				position: position,
 				map: this.map
 			});
-		},
-
-		close: function () {
-			this.circuitSelector.close();
-			f1.pages.BaseMapPageView.prototype.close.apply(this);
 		}
 	});
 }());

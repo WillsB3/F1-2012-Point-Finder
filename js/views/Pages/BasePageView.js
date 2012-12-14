@@ -16,6 +16,18 @@
 			$header: $('.navbar')
 		},
 
+		initialize: function () {
+			f1.log('BasePageView:initalize');
+
+			return this;
+		},
+
+		render: function () {
+			f1.log('BasePageView:render');
+
+			return this;
+		},
+
 		close: function () {
 			this.undelegateEvents();
 			this.unbind();
