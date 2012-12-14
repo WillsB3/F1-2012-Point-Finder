@@ -13,7 +13,9 @@
 			f1.log('TriggerMapperPage:render');
 			f1.pages.BaseCircuitPageView.prototype.render.apply(this);
 
-
+			// Create the drawing manager
+			this.drawingManager = new google.maps.drawing.DrawingManager();
+			drawingManager.setMap(this.map);
 
 			return this;
 		}
