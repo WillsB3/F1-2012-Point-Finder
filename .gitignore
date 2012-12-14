@@ -1,2 +1,47 @@
 Build/*
 /F1 2012 Point Finder.sublime-workspace
+/Build/temp/Circuit Dropdown.html
+/Build/js/views/Pages/BasePageView.js
+/Build/js/views/HeaderView.js
+/Build/js/views/CircuitSelectorView.js
+/Build/js/views/Application.js
+/Build/js/vendor/underscore.js
+/Build/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js
+/Build/js/vendor/jquery-1.8.3.min.js
+/Build/js/vendor/jquery-1.8.3.js
+/Build/js/vendor/bootstrap.min.js
+/Build/js/vendor/bootstrap.js
+/Build/js/vendor/backbone.js
+/Build/js/Utils.js
+/Build/js/Router.js
+/Build/js/app.js
+/Build/img/circuits/melbourne.jpg
+/Build/img/backgrounds/wild_oliva/wild_oliva_@2X.png
+/Build/img/backgrounds/wild_oliva/wild_oliva.png
+/Build/img/backgrounds/wild_oliva/readme.txt
+/Build/img/backgrounds/twinkle_twinkle/twinkle_twinkle_@2X.png
+/Build/img/backgrounds/twinkle_twinkle/twinkle_twinkle.png
+/Build/img/backgrounds/twinkle_twinkle/readme.txt
+/Build/img/backgrounds/subtle_carbon/subtle_carbon_@2X.png
+/Build/img/backgrounds/subtle_carbon/subtle_carbon.png
+/Build/img/backgrounds/subtle_carbon/readme.txt
+/Build/img/backgrounds/shattered/shattered_@2X.png
+/Build/img/backgrounds/shattered/shattered.png
+/Build/img/backgrounds/shattered/readme.txt
+/Build/img/backgrounds/nasty_fabric/readme.txt
+/Build/img/backgrounds/nasty_fabric/nasty_fabric_@2X.png
+/Build/img/backgrounds/nasty_fabric/nasty_fabric.png
+/Build/img/backgrounds/diagonal_waves/readme.txt
+/Build/img/backgrounds/diagonal_waves/diagonal_waves_@2X.png
+/Build/img/backgrounds/diagonal_waves/diagonal_waves.png
+/Build/img/backgrounds/debut_light/debut_light_@2X.png
+/Build/img/backgrounds/debut_light/debut_light.png
+/Build/F1 2012 Point Finder.sublime-project
+/Build/css/normalize.css
+/Build/css/f1.css
+/Build/css/bootstrap.min.css
+/Build/css/bootstrap.css
+/Build/css/bootstrap-responsive.min.css
+/Build/css/bootstrap-responsive.css
+/Build/css/app.css
+/Build/Icon
