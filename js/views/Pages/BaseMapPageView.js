@@ -32,11 +32,7 @@
 			}
 		},
 
-		options: {
-			circuit: 'melbourne'
-		},
 
-		circuit: null,
 		map: null,
 		template: '<div class="circuit-map"></div>',
 
@@ -47,33 +43,22 @@
 			// Setup map options
 			this.mapOptions = _.extend({}, this.baseMapOptions, this.options.mapOptions);
 
-			// Set the initial circuit
-			this.setCircuit(this.options.circuit);
-
 			return this;
 		},
 
-		setCircuit: function (circuitId) {
-			this.circuit = _.find(f1.circuits, function (circuit) {
-				return circuit.id === circuitId;
-			});
+		getMapOptions: function () {
+			return this.mapOptions;
 		},
 
 		render: function () {
 			f1.log('BaseMapPageView:render');
 			f1.pages.BasePageView.prototype.render.apply(this);
 
-			var mapPosition = {
-					center: new google.maps.LatLng(this.circuit.mapCenter.lat, this.circuit.mapCenter.lng),
-					zoom: this.circuit.mapCenter.zoom || 16
-				},
-				mapOptions = _.extend({}, this.mapOptions, mapPosition);
-
 			// Render the map container to the DOM
 			this.$el.append(this.template);
 
 			// Render the Google map
-			this.map = new google.maps.Map(this.$el.find('.circuit-map')[0], mapOptions);
+			this.map = new google.maps.Map(this.$el.find('.circuit-map')[0], this.getMapOptions());
 
 			return this;
 		},

@@ -21,7 +21,7 @@
 
 		initialize: function () {
 			f1.log('CircuitSelector:initalize');
-			_.bindAll(this, 'placeSelected', 'contractSearchField', 'expandSearchField', 'placeSelected', 'onSearchInputBlur');
+			_.bindAll(this, 'searchSuggestionSelected', 'contractSearchField', 'expandSearchField', 'onSearchInputBlur');
 
 			return this;
 		},
@@ -51,6 +51,12 @@
 
 			// Cache required elements
 			this.elements.$searchField = this.$el.find('input.search-field');
+			this.elements.$circuitSelector = this.$el.find('select.circuit-selector-select');
+
+			// Pre-select the current circuit
+			if (this.options.circuit) {
+				this.elements.$circuitSelector.find('option[value="' + this.options.circuit.id + '"]').prop('selected', true);
+			}
 
 			this.setupSearchBox();
 
@@ -68,6 +74,10 @@
 				return circuit.id === selectedCircuitId;
 			});
 
+			// Notify components listening to this view for events that the circuit
+			// was changed
+			this.trigger('circuit:changed', circuit);
+
 			// Create a google LatLng object at the circuits center
 			latLng = new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng);
 
@@ -79,7 +89,7 @@
 			this.options.map.setZoom(zoomLevel);
 		},
 
-		placeSelected: function (evnt) {
+		searchSuggestionSelected: function (evnt) {
 			var places = this.searchBox.getPlaces(),
 				bounds = new google.maps.LatLngBounds(),
 				image,
@@ -126,7 +136,7 @@
 			// Blur the search form on click of other UI elements
 			$('body').on('click', this.onSearchInputBlur);
 
-			google.maps.event.addListener(this.searchBox, 'places_changed', this.placeSelected);
+			google.maps.event.addListener(this.searchBox, 'places_changed', this.searchSuggestionSelected);
 		},
 
 		close: function () {
