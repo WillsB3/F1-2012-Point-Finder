@@ -7,6 +7,11 @@ var f1;
 	f1 = {
 		debugMode: true,
 		pageStartTime: new Date().getTime(),
+		production: false,
+		tileServer: {
+			production: 'http://tiles.f12012pf.willsbithrey.com/',
+			development: 'http://tiles.dev/'
+		},
 
 		circuits: [
 			{
@@ -16,13 +21,13 @@ var f1;
 				image: "melbourne.jpg",
 				bounds: {
 					NW: {
-						lat: null,
-						lng: null
+						lat: -37.8549105451,
+						lng: 144.960886
 					},
 
 					SE: {
-						lat: null,
-						lng: null
+						lat: -37.835617,
+						lng: 144.980000736
 					}
 				},
 				mapCenter: {
@@ -552,6 +557,7 @@ var f1;
 			}
 		},
 
+		maps: {},
 		pages: {},
 		views: {}
 	};
