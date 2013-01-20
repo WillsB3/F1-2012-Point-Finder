@@ -11,6 +11,7 @@
 		},
 
 		searchMarkers: [],
+		mapsApiListeners: {},
 
 		events: {
 			'focus .search-field': 'expandSearchField',
@@ -136,10 +137,11 @@
 			// Blur the search form on click of other UI elements
 			$('body').on('click', this.onSearchInputBlur);
 
-			google.maps.event.addListener(this.searchBox, 'places_changed', this.searchSuggestionSelected);
+			this.mapsApiListeners.searchBox = google.maps.event.addListener(this.searchBox, 'places_changed', this.searchSuggestionSelected);
 		},
 
 		close: function () {
+			google.maps.event.removeListener(this.mapsApiListeners.searchBox);
 			$('body').off('click', this.onSearchInputBlur);
 		}
 	});

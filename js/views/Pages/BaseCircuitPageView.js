@@ -7,8 +7,11 @@
 		},
 
 		circuit: null,
+		customMapInitialised: false,
 
 		initialize: function () {
+			_.bindAll(this, 'onProjectionChanged');
+
 			f1.log('BaseCircuitPageView:initalize');
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
 
@@ -18,20 +21,55 @@
 			return this;
 		},
 
-		createMapType: function (latLngBounds, minZoom, maxZoom) {
-			this.circuitMapType = new google.maps.ImageMapType({
-				getTileUrl: function (coord, zoom) {
-					if (zoom < 17 || zoom > 20 ||
-							bounds[zoom][0][0] > coord.x || coord.x > bounds[zoom][0][1] ||
-							bounds[zoom][1][0] > coord.y || coord.y > bounds[zoom][1][1]) {
+		createMapType: function () {
+			var circuitBounds = new google.maps.LatLngBounds(new google.maps.LatLng(this.circuit.bounds.SW.lat, this.circuit.bounds.SW.lng), new google.maps.LatLng(this.circuit.bounds.NE.lat, this.circuit.bounds.NE.lng));
+			var mapMinZoom = 13;
+			var mapMaxZoom = 19;
+			var opacity = 0.75;
+			var projection = this.map.getProjection();
+			f1.log('Projection is: ');
+			f1.log(projection);
+			var tileSize = 256;
+
+			var circuitMapType = new google.maps.ImageMapType({
+				getTileUrl: function (tile, zoom) {
+					// If we are outside the supported zoom levels we know we
+					// won't have the required tiles early on
+					if ((zoom < mapMinZoom) || (zoom > mapMaxZoom)) {
 						return null;
 					}
 
-					return ['http://www.gstatic.com/io2010maps/tiles/5/L2_',
-							zoom, '_', coord.x, '_', coord.y, '.png'].join('');
+					// Convert tile coordinates to pixel coordinates
+					var pixelCoordinates = {
+						x: tile.x * tileSize,
+						y: tile.y * tileSize
+					};
+
+					// convert Tile coordinates to world coordinates
+					var worldCoordinates = {
+						x: pixelCoordinates.x / (Math.pow(2, zoom)),
+						y: pixelCoordinates.y / (Math.pow(2, zoom))
+					};
+
+					var ymax = 1 << zoom;
+					var y = ymax - tile.y - 1;
+					var tileBounds = new google.maps.LatLngBounds(
+						// projection.fromPointToLatLng(new google.maps.Point(worldCoordinates.x, worldCoordinates.y));
+						projection.fromPointToLatLng(new google.maps.Point((tile.x) * tileSize, (tile.y + 1) * tileSize), zoom),
+						projection.fromPointToLatLng(new google.maps.Point((tile.x + 1) * tileSize, (tile.y) * tileSize), zoom)
+					);
+
+					if (circuitBounds.intersects(tileBounds)) {
+						var tileServerURL = f1.production ?  f1.tileServer.production : f1.tileServer.development;
+						return tileServerURL + this.circuit.placename + '/' + zoom + "/" + tile.x + "/" + y + ".png";
+					} else {
+						return null;
+					}
 				},
-				tileSize: new google.maps.Size(256, 256)
+				tileSize: new google.maps.Size(tileSize, tileSize)
 			});
+
+			return circuitMapType;
 		},
 
 		getMapOptions: function () {
@@ -49,6 +87,14 @@
 			this.circuit = newCircuit;
 		},
 
+		onProjectionChanged: function () {
+			if (!this.customMapInitialised) {
+				var circuitMapType = this.createMapType();
+				this.map.overlayMapTypes.push(circuitMapType);
+				this.customMapInitialised = true;
+			}
+		},
+
 		render: function () {
 			f1.log('BaseCircuitPageView:render');
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
@@ -60,11 +106,7 @@
 			});
 
 			this.circuitSelector.on('circuit:changed', this.onCircuitChanged);
-
 			this.$el.append(this.circuitSelector.render().$el);
-
-			// Create circuit overlay map type
-
 
 			return this;
 		},
