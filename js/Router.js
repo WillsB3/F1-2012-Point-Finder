@@ -21,7 +21,7 @@
 	$(document).ready(function () {
 		f1.app = new f1.Application();
 		f1.app.render();
-		Backbone.history.start({ pushState: true });
+		Backbone.history.start({ pushState: false });
 
 		// Load the current page for testing so we don't have to navigate via the UI
 		// f1.app.router.navigate('calibrate/circuit-bounds.html', { trigger: true });
