@@ -23,8 +23,35 @@
 
 		createMapType: function () {
 			var self = this;
-			var circuitBounds = new google.maps.LatLngBounds(new google.maps.LatLng(this.circuit.bounds.SW.lat, this.circuit.bounds.SW.lng), new google.maps.LatLng(this.circuit.bounds.NE.lat, this.circuit.bounds.NE.lng));
-			window.circuitBounds = circuitBounds;
+
+			// Plot markers for debugging
+			var circuitSW = new google.maps.LatLng(this.circuit.bounds.SW.lat, this.circuit.bounds.SW.lng);
+			var circuitNE = new google.maps.LatLng(this.circuit.bounds.NE.lat, this.circuit.bounds.NE.lng);
+
+			var circuitBounds = new google.maps.LatLngBounds(circuitSW, circuitNE);
+
+			var neMarker = new google.maps.Marker({
+				position: circuitNE,
+				map: self.map,
+				title: 'NE Circuit Bound'
+			});
+
+			var swMarker = new google.maps.Marker({
+				position: circuitSW,
+				map: self.map,
+				title: 'SW Circuit Bound'
+			});
+
+			// Draw debug bounds
+			// var rectangle = new google.maps.Rectangle({
+			// 	strokeColor: '#00FF00',
+			// 	strokeOpacity: 0.8,
+			// 	strokeWeight: 2,
+			// 	fillColor: '#00FF00',
+			// 	fillOpacity: 0.25,
+			// 	map: this.map,
+			// 	bounds: circuitBounds
+			// });
 
 			var mapMinZoom = 13;
 			var mapMaxZoom = 19;
@@ -35,54 +62,92 @@
 
 			var circuitMapType = new google.maps.ImageMapType({
 
-				getTileUrl: function(coord, zoom) {
+				getTileUrl: function (coord, zoom) {
+					// coord: specifies the current tiles world coordinates
+
 					// If we are outside the supported zoom levels we know we
 					// won't have the required tiles early on
 					if ((zoom < mapMinZoom) || (zoom > mapMaxZoom)) {
 						return null;
 					}
 
+					var pixelcoord1 = {
+						x: coord.x * tileSize,
+						y: (coord.y + 1) * tileSize,
+						z:zoom
+					}
+
+					var pixelcoord2 = {
+						x: (coord.x + 1) * tileSize,
+						y: (coord.y) * tileSize,
+						z: zoom
+					};
+
+					var worldcoord1 = new google.maps.Point(pixelcoord1.x / Math.pow(2, zoom), pixelcoord1.y / Math.pow(2, zoom));
+					var worldcoord2 = new google.maps.Point(pixelcoord2.x / Math.pow(2, zoom), pixelcoord2.y / Math.pow(2, zoom));
+
+					var sw = projection.fromPointToLatLng(worldcoord1);
+					var ne = projection.fromPointToLatLng(worldcoord2);
+
+					// var neMarker = new google.maps.Marker({
+					// 	position: ne,
+					// 	map: self.map,
+					// 	title: 'NE'
+					// });
+
+					// f1.log('NE');
+					// f1.log(ne);
+					// window.ne = ne;
+
+					// var swMarker = new google.maps.Marker({
+					// 	position: sw,
+					// 	map: self.map,
+					// 	title: 'SW'
+					// });
+
+					// f1.log('SW');
+					// f1.log(sw);
+					// window.sw = sw;
+
+					var tileBounds = new google.maps.LatLngBounds(sw, ne);
+
+					// if (coord.x === 59157 && coord.y === 40221) {
+					// 	// Draw debug bounds
+					// 	var rectangle = new google.maps.Rectangle({
+					// 		strokeColor: '#FF0000',
+					// 		strokeOpacity: 0.8,
+					// 		strokeWeight: 2,
+					// 		fillColor: '#FF0000',
+					// 		fillOpacity: 0.35,
+					// 		map: self.map,
+					// 		bounds: tileBounds
+					// 	});
+
+
+					// 	var neMarker = new google.maps.Marker({
+					// 		position: ne,
+					// 		map: self.map,
+					// 		title: 'NE Tile Bound'
+					// 	});
+
+					// 	var swMarker = new google.maps.Marker({
+					// 		position: sw,
+					// 		map: self.map,
+					// 		title: 'SW Tile Bound'
+					// 	});
+					// }
+
+					var intersects = circuitBounds.intersects(tileBounds);
 					var tileServerURL = f1.production ?  f1.tileServer.production : f1.tileServer.development;
-					return tileServerURL + self.circuit.placename + '/' + zoom + "/" + coord.x + "/" + (Math.pow(2, zoom) - coord.y - 1) + ".png";
+
+					if (intersects) {
+						return tileServerURL + self.circuit.placename + '/' + zoom + "/" + coord.x + "/" + coord.y + ".png";
+					} else {
+						// return tileServerURL + "red.png";
+						return null;
+					}
 				},
 				tileSize: new google.maps.Size(256, 256)
-
-
-				// getTileUrl: function (tile, zoom) {
-				// 	// If we are outside the supported zoom levels we know we
-				// 	// won't have the required tiles early on
-				// 	if ((zoom < mapMinZoom) || (zoom > mapMaxZoom)) {
-				// 		return null;
-				// 	}
-
-				// 	// Convert tile coordinates to pixel coordinates
-				// 	var pixelCoordinates = {
-				// 		x: tile.x * tileSize,
-				// 		y: tile.y * tileSize
-				// 	};
-
-				// 	// convert Tile coordinates to world coordinates
-				// 	var worldCoordinates = {
-				// 		x: pixelCoordinates.x / (Math.pow(2, zoom)),
-				// 		y: pixelCoordinates.y / (Math.pow(2, zoom))
-				// 	};
-
-				// 	var ymax = 1 << zoom;
-				// 	var y = ymax - tile.y - 1;
-				// 	var tileBounds = new google.maps.LatLngBounds(
-				// 		// projection.fromPointToLatLng(new google.maps.Point(worldCoordinates.x, worldCoordinates.y));
-				// 		projection.fromPointToLatLng(new google.maps.Point((tile.x) * tileSize, (tile.y + 1) * tileSize), zoom),
-				// 		projection.fromPointToLatLng(new google.maps.Point((tile.x + 1) * tileSize, (tile.y) * tileSize), zoom)
-				// 	);
-
-				// 	if (circuitBounds.intersects(tileBounds)) {
-				// 		var tileServerURL = f1.production ?  f1.tileServer.production : f1.tileServer.development;
-				// 		return tileServerURL + this.circuit.placename + '/' + zoom + "/" + tile.x + "/" + y + ".png";
-				// 	} else {
-				// 		return null;
-				// 	}
-				// },
-				// tileSize: new google.maps.Size(tileSize, tileSize)
 			});
 
 			return circuitMapType;
@@ -110,20 +175,6 @@
 					var circuitMapType = this.createMapType();
 					this.map.overlayMapTypes.push(circuitMapType);
 					this.customMapInitialised = true;
-
-					// // Draw debug bounds
-					// var rectangle = new google.maps.Rectangle({
-					// 	strokeColor: '#FF0000',
-					// 	strokeOpacity: 0.8,
-					// 	strokeWeight: 2,
-					// 	fillColor: '#FF0000',
-					// 	fillOpacity: 0.35,
-					// 	map: this.map,
-					// 	bounds: window.circuitBounds
-					// });
-
-					// this.map.setCenter(window.circuitBounds.getCenter());
-					// this.map.fitBounds(window.circuitBounds);
 				}
 			}
 		},
@@ -133,21 +184,6 @@
 
 			f1.log('BaseCircuitPageView:render');
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
-
-			// // Draw debug bounds
-			// var rectangle = new google.maps.Rectangle({
-			// 	strokeColor: '#FF0000',
-			// 	strokeOpacity: 0.8,
-			// 	strokeWeight: 2,
-			// 	fillColor: '#FF0000',
-			// 	fillOpacity: 0.35,
-			// 	map: this.map,
-			// 	bounds: window.circuitBounds
-			// });
-
-
-			// this.map.setCenter(window.circuitBounds.getCenter());
-			// this.map.fitBounds(window.circuitBounds);
 
 			google.maps.event.addListener(this.map, 'projection_changed', function () {
 				self.onProjectionChanged();
