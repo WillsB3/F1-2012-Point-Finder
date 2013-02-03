@@ -42,6 +42,8 @@ body {
 // Modules Styles
 //////////////////////////////////
 .circuit-map {
+	@include user-select(none);
+	
 	height: 100%;
 	width: 100%;
 
@@ -125,9 +127,31 @@ body {
 }
 
 .pac-container::after {
-
 	margin-top: 20px;
 	padding: 10px 15px 0 0;
+}
+
+.slider {
+
+	&.slider--tile-opacity-slider {
+		background: transparent url('../../img/opacity-slider.png') 3px 0 no-repeat;
+		height: 19px;
+		margin-right: 6px;
+		padding: 0 3px;
+		position: relative;
+		width: 68px;
+
+		.slider__handle {
+			background: transparent url('../../img/opacity-slider.png') top right no-repeat;
+			display: block;
+			height: 20px;
+			left: 0;
+			margin-left: -4px;
+			position: absolute;
+			top: 0;
+			width: 14px;
+		}
+	}
 }
 
 //////////////////////////////////

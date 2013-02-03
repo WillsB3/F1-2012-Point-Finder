@@ -1,0 +1,6 @@
+@import "bourbon/_bourbon.scss";
+
+.animations {
+	@include transition (transform 1s ease-in);
+	@include transform(rotateY(180deg));
+}

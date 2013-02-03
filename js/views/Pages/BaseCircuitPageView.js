@@ -7,9 +7,12 @@
 		},
 
 		circuit: null,
-		customMapInitialised: false,
+		circuitMapType: null,
+		circuitMapOpacitySlider: null,
 
 		initialize: function () {
+			var self = this;
+
 			_.bindAll(this, 'onProjectionChanged');
 
 			f1.log('BaseCircuitPageView:initalize');
@@ -17,6 +20,16 @@
 
 			// Set the initial circuit
 			this.setCircuit(this.options.circuit);
+
+			// Create the circuit tile opacity slider
+			this.circuitMapOpacitySlider = new f1.views.googleMapsOpacitySliderView({
+				onChange: function (newValue) {
+					if (self.circuitMapType) {
+						self.circuitMapType.setOpacity(newValue);
+					}
+				},
+				map: null // We don't have the map until after Render of BaseMapPageView
+			});
 
 			return this;
 		},
@@ -74,8 +87,8 @@
 					var pixelcoord1 = {
 						x: coord.x * tileSize,
 						y: (coord.y + 1) * tileSize,
-						z:zoom
-					}
+						z: zoom
+					};
 
 					var pixelcoord2 = {
 						x: (coord.x + 1) * tileSize,
@@ -147,6 +160,7 @@
 						return null;
 					}
 				},
+				opacity: 0.5,
 				tileSize: new google.maps.Size(256, 256)
 			});
 
@@ -169,12 +183,10 @@
 		},
 
 		onProjectionChanged: function () {
-			if (!this.customMapInitialised) {
+			if (!this.circuitMapType) {
 				if (!_.isUndefined(this.map.getProjection())) {
-
-					var circuitMapType = this.createMapType();
-					this.map.overlayMapTypes.push(circuitMapType);
-					this.customMapInitialised = true;
+					this.circuitMapType = this.createMapType();
+					this.map.overlayMapTypes.push(this.circuitMapType);
 				}
 			}
 		},
@@ -197,6 +209,12 @@
 
 			this.circuitSelector.on('circuit:changed', this.onCircuitChanged);
 			this.$el.append(this.circuitSelector.render().$el);
+
+			// Provide the opacity slider access to our map now it's available
+			this.circuitMapOpacitySlider.setMap(this.map);
+			
+			// Render the circuit overlay opacity slider
+			this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.circuitMapOpacitySlider.render().el);
 
 			return this;
 		},
