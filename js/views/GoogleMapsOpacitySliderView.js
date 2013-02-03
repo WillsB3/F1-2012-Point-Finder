@@ -34,10 +34,6 @@
 				self.onHandleMouseDown.apply(self, arguments);
 			});
 
-			// google.maps.event.addDomListener(this.$elements.$handle.get(0), 'mouseup', function (evnt) {
-			// 	self.onHandleMouseUp.apply(self, arguments);
-			// });
-
 			google.maps.event.addDomListener(this.el, 'mousedown', function () {
 				self.onMouseDown.apply(self, arguments);
 			});
