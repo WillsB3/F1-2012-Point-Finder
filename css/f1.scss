@@ -131,6 +131,12 @@ body {
 	padding: 10px 15px 0 0;
 }
 
+.dummy-control {
+	height: 55px;
+	width: 100%;
+	z-index: -100 !important;
+}
+
 .slider {
 
 	&.slider--tile-opacity-slider {

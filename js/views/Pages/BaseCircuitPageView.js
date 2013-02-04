@@ -191,11 +191,36 @@
 			}
 		},
 
+		createDummyControl: function (w, h) {
+			var out = $(document.createElement('div')).addClass('dummy-control').css({ 
+				'height': h,
+				'width': w,
+				'z-index': '-100 !important'
+			});
+
+			out[0].index = -10;
+			return out[0];
+		},
+
 		render: function () {
 			var self = this;
 
 			f1.log('BaseCircuitPageView:render');
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
+
+			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
+			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '50px'));
+			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '50px'));
+			// this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.createDummyControl('10%', '45%'));
+			// this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.createDummyControl('10%', '100%'));
+			// this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.createDummyControl('100%', '10%'));
+
+			// Add the custom invisible controls to stop the Map controls appearing behind the header
+			// this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('2000px', '52px'));
+			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
+			// this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.createDummyControl('100%', '55px'));
+			// this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('100%', '55px'));
+			// this.map.controls[google.maps.ControlPosition.LEFT_TOP].push(this.createDummyControl('100%', '55px'));
 
 			google.maps.event.addListener(this.map, 'projection_changed', function () {
 				self.onProjectionChanged();
@@ -214,7 +239,7 @@
 			this.circuitMapOpacitySlider.setMap(this.map);
 			
 			// Render the circuit overlay opacity slider
-			this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.circuitMapOpacitySlider.render().el);
+			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.circuitMapOpacitySlider.render().el);
 
 			return this;
 		},

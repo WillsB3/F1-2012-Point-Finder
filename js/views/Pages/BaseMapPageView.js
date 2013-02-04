@@ -10,25 +10,24 @@
 			mapTypeControl: true,
 			mapTypeControlOptions: {
 				style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-				position: google.maps.ControlPosition.RIGHT_CENTER
+				position: google.maps.ControlPosition.RIGHT_TOP
 			},
 
 			panControl: true,
 			panControlOptions: {
-				position: google.maps.ControlPosition.LEFT_CENTER
+				position: google.maps.ControlPosition.LEFT_TOP
 			},
 
 			zoomControl: true,
 			zoomControlOptions: {
 				style: google.maps.ZoomControlStyle.LARGE,
-				position: google.maps.ControlPosition.LEFT_CENTER
+				position: google.maps.ControlPosition.LEFT_TOP
 			},
 
 			scaleControl: false,
 
 			streetViewControl: false,
 			streetViewControlOptions: {
-				position: google.maps.ControlPosition.LEFT_CENTER
 			}
 		},
 

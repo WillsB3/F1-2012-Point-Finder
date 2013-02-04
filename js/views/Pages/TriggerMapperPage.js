@@ -6,7 +6,7 @@
 			drawingMode: google.maps.drawing.OverlayType.POLYGON,
 			drawingControl: true,
 			drawingControlOptions: {
-				position: google.maps.ControlPosition.RIGHT_CENTER,
+				position: google.maps.ControlPosition.RIGHT_TOP,
 				drawingModes: [
 					google.maps.drawing.OverlayType.POLYGON
 				]
