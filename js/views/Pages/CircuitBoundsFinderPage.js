@@ -2,6 +2,15 @@
 (function () {
 	"use strict";
 	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseCircuitPageView.extend({
+		points: {
+			codemasters: {},
+			gMaps: {}
+		},
+
+		templates: {
+			pointsList: $('#circuit-points-list').html()
+		},
+
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
@@ -19,6 +28,8 @@
 			google.maps.event.addListener(this.map, 'click', function (e) {
 				self.placeMarker(e);
 			});
+			debugger
+			this.$el.append(this.templates.pointsList);
 
 			return this;
 		},
