@@ -44,4 +44,8 @@ Build/*
 /Build/css/bootstrap-responsive.min.css
 /Build/css/bootstrap-responsive.css
 /Build/css/app.css
-/Build/Icon
+/Build/Icon
+tmp*
+*swp
+*swo
+*py[co]
