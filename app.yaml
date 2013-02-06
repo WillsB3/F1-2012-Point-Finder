@@ -1,4 +1,4 @@
-application: wills-f1-thing
+application: f12012-pf
 version: 1
 runtime: python27
 api_version: 1
@@ -18,7 +18,7 @@ handlers:
 
 - url: /static
   static_dir: static
-  expiration: '1m'
+  # expiration: '1m'
 
 - url: /favicon.ico
   static_files: favicon.ico
@@ -35,3 +35,4 @@ skip_files:
 - ^(.*/)?.*\.py[co]
 - ^(.*/)?\..*
 - tmp
+- static/scss
