@@ -19,7 +19,7 @@
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
 
 			// Set the initial circuit
-			this.setCircuit(this.options.circuit);
+			this.setCircuit(this.options.circuit, { silent: true });
 
 			// Create the circuit tile opacity slider
 			this.circuitMapOpacitySlider = new f1.views.googleMapsOpacitySliderView({
@@ -30,6 +30,8 @@
 				},
 				map: null // We don't have the map until after Render of BaseMapPageView
 			});
+
+			this.on('map:ready', this.onMapReady);
 
 			return this;
 		},
@@ -179,7 +181,29 @@
 
 		onCircuitChanged: function (newCircuit) {
 			f1.log('BaseCircuitPageView:onCircuitChanged');
-			this.circuit = newCircuit;
+
+			var circuit = newCircuit,
+				latLng,
+				zoomLevel;
+
+			// Create a google LatLng object at the circuits center
+			latLng = new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng);
+
+			// Center the map on the selected circuits location
+			this.map.panTo(latLng);
+
+			// Zoom to roughly the correct level
+			zoomLevel = this.circuit.mapCenter.zoom || 16;
+			this.map.setZoom(zoomLevel);
+
+			if (circuit.maxZoom) {
+				this.map.setOptions({ maxZoom: circuit.maxZoom });
+			}
+		},
+
+		onMapReady: function () {
+			this.off('map:ready', this.onMapReady);
+			this.onCircuitChanged(this.circuit);
 		},
 
 		onProjectionChanged: function () {
@@ -187,6 +211,8 @@
 				if (!_.isUndefined(this.map.getProjection())) {
 					this.circuitMapType = this.createMapType();
 					this.map.overlayMapTypes.push(this.circuitMapType);
+
+					this.trigger('map:ready');
 				}
 			}
 		},
@@ -232,7 +258,7 @@
 				circuit: this.circuit
 			});
 
-			this.circuitSelector.on('circuit:changed', this.onCircuitChanged);
+			this.circuitSelector.on('circuit:changed', this.setCircuit);
 			this.$el.append(this.circuitSelector.render().$el);
 
 			// Provide the opacity slider access to our map now it's available
@@ -244,10 +270,16 @@
 			return this;
 		},
 
-		setCircuit: function (circuitId) {
+		setCircuit: function (circuitId, options) {
+			var opts = options || {};
+
 			this.circuit = _.find(f1.circuits, function (circuit) {
 				return circuit.id === circuitId;
 			});
+
+			if (!opts.silent) {
+				this.onCircuitChanged.apply(this, [this.circuit]);
+			}
 		},
 
 		close: function () {

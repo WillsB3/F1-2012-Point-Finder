@@ -37,16 +37,27 @@
 		showPage: function (view, options) {
 			f1.log('Application:showPage');
 
-			if (_.isUndefined(options)) {
-				options = {};
-			}
+			var circuit = null;
 
 			if (this.currentView) {
 				f1.info('Application: Closing the current view');
+				
+				if (this.currentView.circuit) {
+					circuit = this.currentView.circuit;
+				}
+
 				this.currentView.close();
 				this.currentView = null;
 
 				this.vent.trigger('application:currentView:closed');
+			}
+
+			if (_.isUndefined(options)) {
+				options = {};
+			}
+
+			if (circuit) {
+				options.circuit = circuit;
 			}
 
 			f1.info('Application: Creating the new page view');

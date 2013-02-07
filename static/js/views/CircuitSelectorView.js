@@ -66,9 +66,7 @@
 
 		circuitSelected: function (evnt) {
 			var circuit,
-				latLng,
-				selectedCircuitId = $(evnt.currentTarget).val(),
-				zoomLevel;
+				selectedCircuitId = $(evnt.currentTarget).val();
 
 			// Obtain the correct circuit config object
 			circuit = _.find(f1.circuits, function (circuit) {
@@ -78,20 +76,6 @@
 			// Notify components listening to this view for events that the circuit
 			// was changed
 			this.trigger('circuit:changed', circuit);
-
-			// Create a google LatLng object at the circuits center
-			latLng = new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng);
-
-			// Center the map on the selected circuits location
-			this.options.map.panTo(latLng);
-
-			// Zoom to roughly the correct level
-			zoomLevel = circuit.mapCenter.zoom || 16;
-			this.options.map.setZoom(zoomLevel);
-
-			if (circuit.maxZoom) {
-				this.options.map.setOptions({ maxZoom: circuit.maxZoom });
-			}
 		},
 
 		searchSuggestionSelected: function (evnt) {
