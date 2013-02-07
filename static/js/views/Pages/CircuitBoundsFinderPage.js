@@ -13,22 +13,22 @@
 
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
-			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
+			f1.pages.BaseCircuitPageView.prototype.initialize.apply(this);
 
 			return this;
 		},
 
 		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
+			
 			var self = this;
-
-			f1.pages.BaseMapPageView.prototype.render.apply(this);
+			f1.pages.BaseCircuitPageView.prototype.render.apply(this);
 
 			// Attach the click handler
 			google.maps.event.addListener(this.map, 'click', function (e) {
 				self.placeMarker(e);
 			});
-			debugger
+			
 			this.$el.append(this.templates.pointsList);
 
 			return this;
