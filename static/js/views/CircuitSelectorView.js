@@ -88,6 +88,10 @@
 			// Zoom to roughly the correct level
 			zoomLevel = circuit.mapCenter.zoom || 16;
 			this.options.map.setZoom(zoomLevel);
+
+			if (circuit.maxZoom) {
+				this.options.map.setOptions({ maxZoom: circuit.maxZoom });
+			}
 		},
 
 		searchSuggestionSelected: function (evnt) {

@@ -55,6 +55,7 @@ var f1;
 					lng: 144.97056484222412,
 					zoom: 16
 				},
+				maxZoom: 19,
 				round: 1
 			},
 
