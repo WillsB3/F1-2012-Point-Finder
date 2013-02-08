@@ -3,7 +3,7 @@
 	"use strict";
 	f1.pages.BaseCircuitPageView = f1.pages.BaseMapPageView.extend({
 		options: {
-			circuit: 'melbourne'
+			circuit: f1.circuits[0]
 		},
 
 		circuit: null,
@@ -13,7 +13,7 @@
 		initialize: function () {
 			var self = this;
 
-			_.bindAll(this, 'onProjectionChanged');
+			_.bindAll(this, 'onProjectionChanged', 'setCircuit');
 
 			f1.log('BaseCircuitPageView:initalize');
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
@@ -270,12 +270,10 @@
 			return this;
 		},
 
-		setCircuit: function (circuitId, options) {
+		setCircuit: function (circuit, options) {
 			var opts = options || {};
-
-			this.circuit = _.find(f1.circuits, function (circuit) {
-				return circuit.id === circuitId;
-			});
+			
+			this.circuit = circuit;
 
 			if (!opts.silent) {
 				this.onCircuitChanged.apply(this, [this.circuit]);
