@@ -50,3 +50,6 @@ tmp*
 *swp
 *swo
 *py[co]
+
+/nginx/
+/nginx.conf
