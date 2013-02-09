@@ -44,6 +44,7 @@
 			f1.log(evnt.ga);
 
 			var marker = new google.maps.Marker({
+				draggable: true,
 				position: position,
 				map: this.map
 			});
