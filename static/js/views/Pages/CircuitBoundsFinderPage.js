@@ -2,22 +2,14 @@
 (function () {
 	"use strict";
 	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseCircuitPageView.extend({
-		points: {
-			codemasters: {},
-			gMaps: {}
-		},
 
-		templates: {
-			pointsList: $('#circuit-points-list').html()
-		},
-
-		events: {
-			'click .js-add-point-pair' : 'addPointPair'
-		},
+		pointsListView: null,
 
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
 			f1.pages.BaseCircuitPageView.prototype.initialize.apply(this);
+
+			this.pointsListView = new f1.views.PointsListView();
 
 			return this;
 		},
@@ -33,7 +25,8 @@
 				self.placeMarker(e);
 			});
 			
-			this.$el.append(this.templates.pointsList);
+			// Render the points list view
+			this.$el.append(this.pointsListView.render().$el);
 
 			return this;
 		},
@@ -52,10 +45,6 @@
 				position: position,
 				map: this.map
 			});
-		},
-
-		addPointPair: function () {
-
 		}
 	});
 }());
