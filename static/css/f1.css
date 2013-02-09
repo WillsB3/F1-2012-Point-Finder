@@ -116,14 +116,14 @@ body {
 .slider {
   cursor: pointer; }
   .slider.slider--tile-opacity-slider {
-    background: transparent url("../../img/opacity-slider.png") 3px 0 no-repeat;
+    background: transparent url("static/img/opacity-slider.png") 3px 0 no-repeat;
     height: 19px;
     margin-right: 6px;
     padding: 0 3px;
     position: relative;
     width: 68px; }
     .slider.slider--tile-opacity-slider .slider__handle {
-      background: transparent url("../../img/opacity-slider.png") top right no-repeat;
+      background: transparent url("static/img/opacity-slider.png") top right no-repeat;
       cursor: pointer;
       display: block;
       height: 20px;
