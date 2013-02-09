@@ -11,6 +11,10 @@
 			pointsList: $('#circuit-points-list').html()
 		},
 
+		events: {
+			'click .js-add-point-pair' : 'addPointPair'
+		},
+
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
 			f1.pages.BaseCircuitPageView.prototype.initialize.apply(this);
@@ -48,6 +52,10 @@
 				position: position,
 				map: this.map
 			});
+		},
+
+		addPointPair: function () {
+
 		}
 	});
 }());
