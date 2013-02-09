@@ -578,6 +578,8 @@ var f1;
 			}
 		},
 
+		collections: {},
+		models: {},
 		maps: {},
 		pages: {},
 		views: {}
