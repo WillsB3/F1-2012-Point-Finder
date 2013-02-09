@@ -1,28 +1,24 @@
 <script id="circuit-points-list" type="text/template">
 	<div class="points-list__section">
-		<table class="table table-striped">
+		<table class="table table-striped table-bordered js-points-table">
 			<thead>
 				<tr>
-					<th>Game Coordinates</th>
-					<th>World Coordinats</th>
+					<th colspan="2">Game Coordinates</th>
+					<th colspan="2">World Coordinats</th>
+				</tr>
+				<tr>
+					<th>X</th><th>Y</th>
+					<th>Lat</th><th>Lng</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>-</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>-</td>
-					<td>-</td>
-				</tr>
-			</tbody>
+			<tbody></tbody>
 			<tfoot>
 				<tr>
-					<td colspan="2"><button class="btn btn-primary js-add-point--pair">Add</button></td>
+					<td colspan="4">Click a cell to copy the untruncated value</td>
 				</tr>
 			</tfoot>
 		</table>
+		<button class="btn btn-primary points-list__section__add-point-button js-add-point--pair">Add</button>
 		<ul class="points-list__list js-points-list__list--cm"></ul>
 		<ul class="points-list__list js-points-list__list--f12012pf"></ul>
 	</div>

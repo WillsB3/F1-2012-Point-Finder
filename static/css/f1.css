@@ -87,16 +87,18 @@ body {
   position: absolute;
   right: 6px;
   top: 112px; }
-  .points-list .table-striped tbody > tr:nth-child(odd) > td, .points-list .table-striped tbody > tr:nth-child(odd) > th {
-    background-color: white; }
+  .points-list table {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px; }
   .points-list .table-striped tbody > tr:nth-child(even) > td, .points-list .table-striped tbody > tr:nth-child(even) > th {
     background-color: #f0f0f0; }
   .points-list tfoot td {
-    padding-left: 0;
-    padding-right: 0; }
-    .points-list tfoot td .btn-primary {
-      display: block;
-      width: 100%; }
+    color: #777;
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: center; }
+  .points-list .points-list__section__add-point-button {
+    width: 100%; }
 
 .pac-container {
   box-sizing: content-box;
