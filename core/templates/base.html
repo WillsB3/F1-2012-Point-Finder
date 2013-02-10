@@ -43,9 +43,19 @@
 		<!-- Include Javascript templates -->
 		{% include 'includes/js_templates.html' %}
 
-		<!-- Application JS -->
+		<!-- Application Utilities -->
 		<script src="/static/js/Utils.js"></script>
 
+		<!-- Configuration -->
+		<script>
+			{% if ON_PRODUCTION %}
+				f1.production = true; 
+			{% else %}
+				f1.production = false; 
+			{% endif %}
+		</script>
+
+		<!-- Application JS -->
 		<script src="/static/js/Models.js"></script>
 		<script src="/static/js/Collections.js"></script>
 

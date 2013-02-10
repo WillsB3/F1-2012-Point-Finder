@@ -7,7 +7,7 @@ var f1;
 	f1 = {
 		debugMode: true,
 		pageStartTime: new Date().getTime(),
-		production: false,
+		production: null, // Will be over-ridden by Django
 		tileServer: {
 			production: 'http://tiles.f12012pf.willsbithrey.com/',
 			development: 'http://tiles.dev/'
