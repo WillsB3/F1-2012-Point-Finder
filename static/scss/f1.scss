@@ -108,11 +108,11 @@ body {
 	@include transition (all 100ms ease-in-out);
 	bottom: 25px;
 	max-height: 100%;
-	overflow: hidden;
-	padding: 120px 0 0 0;
+	overflow: auto;
+	overflow-y: auto;
 	position: absolute;
 	right: 6px;
-	top: 0;
+	top: 120px;
 	width: 340px;
 
 	.points-list__wrapper {
