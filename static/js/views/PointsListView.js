@@ -6,7 +6,8 @@
 		className: "points-list",
 
 		events: {
-			'click .js-add-point--pair': 'addPoint'
+			'click .js-add-point': 'addPoint',
+			'click .js-edit-points': 'toggleEditMode'
 			// 'mouseenter .points-list__wrapper': 'expandPane',
 			// 'mouseleave .points-list__wrapper': 'collapsePane'
 		},
@@ -20,6 +21,8 @@
 		elements: {
 			$pointsTable: null
 		},
+
+		isEditing: false,
 
 		initialize: function () {
 			this.points = new f1.collections.PointList();
@@ -65,6 +68,34 @@
 
 			// Store a reference to the point view		
 			this.pointViews[model.cid] = pointView;
+		},
+
+		toggleEditMode: function () {
+			this.isEditing = !this.isEditing;
+
+			if (this.isEditing) {
+				this.enableEditing();
+			} else {
+				this.disableEditing();
+			}
+		},
+
+		disableEditing: function () {
+
+		},
+
+		enableEditing: function () {
+			var $coordinateCells = this.$el.find('.js-point-is-editable'),
+				editingTemplate = '<input type="text">';
+
+			// If edit mode was enabled, replace the X/Y
+			// text nodes with inputs
+			$coordinateCells.each(function (index, element) {
+				var $element = $(element),
+					contents = $element.text();
+
+
+			});
 		},
 
 		remove: function () {

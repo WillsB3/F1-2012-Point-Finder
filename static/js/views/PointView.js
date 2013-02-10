@@ -4,9 +4,16 @@
 	f1.views.Point = Backbone.View.extend({
 		marker: null,
 		template: _.template($('#circuit-points-calibration-point').html()),
+		editingTemplate: _.template($('#circuit-points-list-point-editing').html()),
+
+		events: {
+			'click .points-table-edit': 'enableEditing'
+		},
+
+		isEditing: false,
 
 		initialize: function (options) {
-			_.bindAll(this, 'onMarkerMoved', 'onPointUpdated');
+			_.bindAll(this, 'enableEditing', 'onMarkerMoved', 'onPointUpdated');
 
 			this.point = options.point || null;
 			this.map = options.map || null;
@@ -30,14 +37,31 @@
 			return marker;
 		},
 
+		disableEditing: function (evnt) {
+			this.isEditing = false;
+			this.render();
+		},
+
+		enableEditing: function (evnt) {
+			this.isEditing = true;
+			this.render();
+		},
+
 		render: function () {
+			var templateToUse = this.template;
+
 	 		if (!this.marker) {
 				this.renderMarker();
 	 		}
 
-	 		this.$el.html(this.template({
+	 		if (this.isEditing) {
+	 			templateToUse = this.editingTemplate;
+	 		}
+
+	 		this.$el.html(templateToUse({
 	 			game_x: this.point.get('game_x') || '-',
 	 			game_y: this.point.get('game_y') || '-',
+	 			point_cid: this.point.cid,
 	 			world_lat: this.point.get('world_lat') || '-',
 	 			world_lng: this.point.get('world_lng') || '-'
 	 		}));

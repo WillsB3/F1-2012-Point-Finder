@@ -92,7 +92,7 @@ body {
   position: absolute;
   right: 6px;
   top: 120px;
-  width: 340px; }
+  width: 420px; }
   .points-list .points-list__wrapper {
     -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
@@ -105,9 +105,14 @@ body {
     background-color: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
     table-layout: fixed; }
+    .points-list table thead th.points-table-header--edit {
+      width: 60px; }
     .points-list table tbody td {
-      text-overflow: ellipsis;
-      overflow: hidden; }
+      line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+      .points-list table tbody td .points-table-edit {
+        margin: 0 0 0 4px; }
     .points-list table input {
       height: 2em;
       padding: 12px 5px;
@@ -122,10 +127,6 @@ body {
     text-align: center; }
   .points-list .points-list__section__add-point-button {
     width: 100%; }
-
-.points-list.is-expanded {
-  min-width: 340px;
-  width: 500px; }
 
 .pac-container {
   box-sizing: content-box;
