@@ -55,26 +55,22 @@
 			// Create a view (marker) for the point.
 			// The Point view will automatically render itself
 			var pointView = new f1.views.Point({
+				tagName: 'tr',
+				template: this.pointTemplate,
 				point: model,
 				map: this.options.map
 			});
 
-			// We aren't attaching the view to the DOM since
-			// it doesn't require an element. It just renders
-			// the marker on the Google map via the Maps API.
-			pointView.render();
+			this.elements.$pointsTable.find('tbody').append(pointView.render().$el);
 
+			// Store a reference to the point view		
 			this.pointViews[model.cid] = pointView;
+		},
 
-			// Add an entry in the points table
-			var rowHtml = this.pointTemplate({
-				game_coord_x: '-',
-				game_coord_y: '-',
-				world_coord_lat: model.get('location').lat(),
-				world_coord_lng: model.get('location').lng()
+		remove: function () {
+			_.each(this.pointViews, function (pointView) {
+				pointView.remove();
 			});
-
-			this.elements.$pointsTable.find('tbody').append(rowHtml);
 		},
 
 		render: function () {
