@@ -7,6 +7,8 @@
 
 		events: {
 			'click .js-add-point--pair': 'addPoint'
+			// 'mouseenter .points-list__wrapper': 'expandPane',
+			// 'mouseleave .points-list__wrapper': 'collapsePane'
 		},
 
 		template: $('#circuit-points-list').html(),
@@ -37,6 +39,14 @@
 			});
 
 			this.points.add(point);
+		},
+
+		expandPane: function () {
+			this.$el.addClass('is-expanded');
+		},
+
+		collapsePane: function () {
+			this.$el.removeClass('is-expanded');
 		},
 
 		createMarker: function () {
