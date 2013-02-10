@@ -88,6 +88,7 @@ body {
   max-height: 100%;
   overflow: auto;
   overflow-y: auto;
+  pointer-events: none;
   position: absolute;
   right: 6px;
   top: 120px;
@@ -98,7 +99,8 @@ body {
     background-color: rgba(255, 255, 255, 0.8);
     overflow: auto;
     overflow-y: auto;
-    padding: 10px; }
+    padding: 10px;
+    pointer-events: auto; }
   .points-list table {
     background-color: rgba(255, 255, 255, 0.9);
     margin-bottom: 10px;
