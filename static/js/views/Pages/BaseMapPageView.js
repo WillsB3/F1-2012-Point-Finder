@@ -7,7 +7,7 @@
 			center: null,
 			mapTypeId: google.maps.MapTypeId.HYBRID,
 
-			mapTypeControl: true,
+			mapTypeControl: false,
 			mapTypeControlOptions: {
 				style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
 				position: google.maps.ControlPosition.RIGHT_TOP

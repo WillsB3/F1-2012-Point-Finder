@@ -235,8 +235,8 @@
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
 
 			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
-			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '50px'));
-			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '50px'));
+			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '60px'));
+			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '60px'));
 			// this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.createDummyControl('10%', '45%'));
 			// this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.createDummyControl('10%', '100%'));
 			// this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.createDummyControl('100%', '10%'));
