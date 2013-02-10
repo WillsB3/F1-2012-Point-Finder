@@ -50,8 +50,6 @@
 		},
 
 		onPointAdded: function (model, collection, options) {
-			console.log('Point Added');
-
 			// Create a view (marker) for the point.
 			// The Point view will automatically render itself
 			var pointView = new f1.views.Point({
