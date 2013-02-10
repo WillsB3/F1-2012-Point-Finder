@@ -14,7 +14,8 @@
 			this.template = options.template || this.template;
 
 			this.listenTo(this.point, 'change', this.onPointUpdated);
-			
+			this.render();
+
 			return this;
 		},
 

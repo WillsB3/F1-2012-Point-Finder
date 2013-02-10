@@ -31,10 +31,12 @@
 		},
 
 		addPoint: function () {
+			var location = this.options.map.getCenter();
 
 			// Create the model for this point
 			var point = new f1.models.Point({
-				location: this.options.map.getCenter(),
+				world_lat: location.lat(),
+				world_lng: location.lng(),
 				map: this.options.map
 			});
 
