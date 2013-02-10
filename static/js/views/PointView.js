@@ -1,21 +1,21 @@
 /*global $, Backbone, _ */
 (function () {
 	"use strict";
-	f1.views.Point = function (options) {
-		var options = options || {};
+	f1.views.Point = Backbone.View.extend({
+		marker: null,
 
-		var point = options.point || null;
-		var map = options.map || null;
+		initialize: function (options) {
+			this.point = options.point || null;
+			this.map = options.map || null;
+			this.marker = null;
 
-		var marker = null;
+			this.$el = null;
+			this.el = null;
 
-	 	this.initialize = function () {
-		 	console.log('Point Created');
+			console.log('Point Created');
+		},
 
-		 	this.render();
-	 	};
-
-	 	this.createMarker = function () {
+		createMarker: function () {
 			var marker = new google.maps.Marker({
 				animation: google.maps.Animation.DROP,
 				draggable: true,
@@ -24,42 +24,27 @@
 			});
 
 			return marker;
-	 	};
+		},
 
-	 	this.render = function () {
-	 		var marker = this.marker;
+		render: function () {
+			var marker = this.marker;
 
 	 		if (!marker) {
 				marker = new google.maps.Marker({
 					animation: google.maps.Animation.DROP,
 					draggable: true,
-					map: map,
-					position: map.getCenter()
+					map: this.map,
+					position: this.map.getCenter()
 				});
 	 		}
-	 	};
+		},
 
-	 	this.destroy = function () {
-	 		if (this.marker) {
+		remove: function () {
+			if (this.marker) {
 	 			this.marker.setMap(null);
 	 		}
-	 	};
 
-	 	this.getMap = function () {
-	 		return map;
-	 	};
-
-	 	this.getMarker = function () {
-	 		return marker;
-	 	};
-
-	 	this.initialize();
-
-	 	return {
-	 		destroy: this.destroy,
-	 		render: this.render,
-	 		getMap: this.getMap,
-	 		getMarker: this.getMarker
-	 	}
-	};
+	 		Backbone.View.prototype.remove.apply(this, []);
+		}
+	});
 }());

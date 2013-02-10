@@ -49,17 +49,6 @@
 			this.$el.removeClass('is-expanded');
 		},
 
-		createMarker: function () {
-			var marker = new google.maps.Marker({
-				animation: google.maps.Animation.DROP,
-				draggable: true,
-				map: this.options.map,
-				position: this.options.map.getCenter()
-			});
-
-			return marker;
-		},
-
 		onPointAdded: function (model, collection, options) {
 			console.log('Point Added');
 
@@ -69,7 +58,12 @@
 				point: model,
 				map: this.options.map
 			});
-			
+
+			// We aren't attaching the view to the DOM since
+			// it doesn't require an element. It just renders
+			// the marker on the Google map via the Maps API.
+			pointView.render();
+
 			this.pointViews[model.cid] = pointView;
 
 			// Add an entry in the points table
