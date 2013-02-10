@@ -234,19 +234,8 @@
 			f1.log('BaseCircuitPageView:render');
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
 
-			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
 			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '60px'));
 			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '60px'));
-			// this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.createDummyControl('10%', '45%'));
-			// this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.createDummyControl('10%', '100%'));
-			// this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.createDummyControl('100%', '10%'));
-
-			// Add the custom invisible controls to stop the Map controls appearing behind the header
-			// this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('2000px', '52px'));
-			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.LEFT_TOP].push(this.createDummyControl('100%', '55px'));
 
 			google.maps.event.addListener(this.map, 'projection_changed', function () {
 				self.onProjectionChanged();
