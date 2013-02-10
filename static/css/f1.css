@@ -108,6 +108,11 @@ body {
     .points-list table tbody td {
       text-overflow: ellipsis;
       overflow: hidden; }
+    .points-list table input {
+      height: 2em;
+      padding: 12px 5px;
+      margin-bottom: 0;
+      width: 100%; }
   .points-list .table-striped tbody > tr:nth-child(even) > td, .points-list .table-striped tbody > tr:nth-child(even) > th {
     background-color: #f0f0f0; }
   .points-list tfoot td {

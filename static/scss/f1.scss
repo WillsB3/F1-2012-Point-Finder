@@ -138,6 +138,13 @@ body {
 			text-overflow: ellipsis;
 			overflow: hidden;
 		}
+
+		input {
+			height: 2em;
+			padding: 12px 5px;
+			margin-bottom: 0;
+			width: 100%;
+		}
 	}
 
 	.table-striped tbody > tr:nth-child(even) > td, .table-striped tbody > tr:nth-child(even) > th {
