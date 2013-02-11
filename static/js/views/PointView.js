@@ -7,7 +7,8 @@
 		editingTemplate: _.template($('#circuit-points-list-point-editing').html()),
 
 		events: {
-			'click .points-table-edit': 'enableEditing'
+			'click .points-table-edit': 'enableEditing',
+			'click .points-table-done': 'disableEditing'
 		},
 
 		isEditing: false,
@@ -38,6 +39,15 @@
 		},
 
 		disableEditing: function (evnt) {
+			// Store the values
+			this.point.set({
+				'game_x': this.$el.find('[name=point-' + this.point.cid + '-x]').val(),
+				'game_y': this.$el.find('[name=point-' + this.point.cid + '-y]').val()
+			});
+			
+			// Save the point
+			this.point.save();
+
 			this.isEditing = false;
 			this.render();
 		},
