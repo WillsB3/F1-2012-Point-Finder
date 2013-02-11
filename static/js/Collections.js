@@ -8,6 +8,8 @@
 
 		localStorage: new Backbone.LocalStorage("PointList"),
 
+		model: f1.models.Point,
+
 		initialize: function () {
 			f1.log('PointList::initialize');
 		}

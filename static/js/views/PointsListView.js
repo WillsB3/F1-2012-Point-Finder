@@ -29,6 +29,7 @@
 			this.pointViews = {};
 
 			this.listenTo(this.points, 'add', this.onPointAdded);
+			this.listenTo(this.points, 'reset', this.onDataLoaded);
 
 			return this;
 		},
@@ -39,8 +40,7 @@
 			// Create the model for this point
 			var point = new f1.models.Point({
 				world_lat: location.lat(),
-				world_lng: location.lng(),
-				map: this.options.map
+				world_lng: location.lng()
 			});
 
 			this.points.add(point);
@@ -54,7 +54,7 @@
 			this.$el.removeClass('is-expanded');
 		},
 
-		onPointAdded: function (model, collection, options) {
+		onPointAdded: function (model, collection) {
 			// Create a view (marker) for the point.
 			// The Point view will automatically render itself
 			var pointView = new f1.views.Point({
@@ -68,6 +68,14 @@
 
 			// Store a reference to the point view		
 			this.pointViews[model.cid] = pointView;
+		},
+
+		onDataLoaded: function() {
+			var self = this;
+			
+			this.points.each(function(point) {
+				self.onPointAdded(point, self.points);
+			});
 		},
 
 		toggleEditMode: function () {
@@ -89,6 +97,9 @@
 		render: function () {
 			this.$el.append(this.template);
 			this.elements.$pointsTable = this.$el.find('.js-points-table');
+
+			// Load point data 
+			this.points.fetch();
 
 			return this;
 		}
