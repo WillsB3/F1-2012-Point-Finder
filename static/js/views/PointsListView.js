@@ -80,24 +80,6 @@
 			}
 		},
 
-		disableEditing: function () {
-
-		},
-
-		enableEditing: function () {
-			var $coordinateCells = this.$el.find('.js-point-is-editable'),
-				editingTemplate = '<input type="text">';
-
-			// If edit mode was enabled, replace the X/Y
-			// text nodes with inputs
-			$coordinateCells.each(function (index, element) {
-				var $element = $(element),
-					contents = $element.text();
-
-
-			});
-		},
-
 		remove: function () {
 			_.each(this.pointViews, function (pointView) {
 				pointView.remove();
