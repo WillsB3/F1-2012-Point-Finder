@@ -36,6 +36,14 @@
 			return this;
 		},
 
+		bindEvents: function () {
+			f1.pages.BaseMapPageView.prototype.bindEvents.apply(this, arguments);
+		},
+
+		unbindEvents: function () {
+			f1.pages.BaseMapPageView.prototype.unbindEvents.apply(this, arguments);
+		},
+
 		createMapType: function () {
 			var self = this;
 

@@ -1,4 +1,4 @@
-/*global $, Backbone, _ */
+/*global $, Backbone, _, f1, google */
 (function () {
 	"use strict";
 	f1.views.Point = Backbone.View.extend({
@@ -39,20 +39,25 @@
 		},
 
 		disableEditing: function (evnt) {
+			f1.app.vent.trigger('map:editingDisabled');
+
 			// Store the values
 			this.point.set({
 				'game_x': this.$el.find('[name=point-' + this.point.cid + '-x]').val(),
 				'game_y': this.$el.find('[name=point-' + this.point.cid + '-y]').val()
 			});
-			
+
 			// Save the point
 			this.point.save();
 
 			this.isEditing = false;
+
 			this.render();
 		},
 
 		enableEditing: function (evnt) {
+			f1.app.vent.trigger('map:editingEnabled');
+
 			this.isEditing = true;
 			this.render();
 		},
@@ -60,23 +65,23 @@
 		render: function () {
 			var templateToUse = this.template;
 
-	 		if (!this.marker) {
+			if (!this.marker) {
 				this.renderMarker();
-	 		}
+			}
 
-	 		if (this.isEditing) {
-	 			templateToUse = this.editingTemplate;
-	 		}
+			if (this.isEditing) {
+				templateToUse = this.editingTemplate;
+			}
 
-	 		this.$el.html(templateToUse({
-	 			game_x: this.point.get('game_x') || '-',
-	 			game_y: this.point.get('game_y') || '-',
-	 			point_cid: this.point.cid,
-	 			world_lat: this.point.get('world_lat') || '-',
-	 			world_lng: this.point.get('world_lng') || '-'
-	 		}));
+			this.$el.html(templateToUse({
+				game_x: this.point.get('game_x') || '-',
+				game_y: this.point.get('game_y') || '-',
+				point_cid: this.point.cid,
+				world_lat: this.point.get('world_lat') || '-',
+				world_lng: this.point.get('world_lng') || '-'
+			}));
 
-	 		return this;
+			return this;
 		},
 
 		onMarkerMoved: function () {
@@ -91,7 +96,7 @@
 		},
 
 		renderMarker: function () {
-			f1.log("rendering marker")
+			f1.log("rendering marker");
 			this.marker = new google.maps.Marker({
 				animation: google.maps.Animation.DROP,
 				draggable: true,
@@ -106,11 +111,11 @@
 
 		remove: function () {
 			if (this.marker) {
-	 			google.maps.event.clearInstanceListeners(this.marker);
-	 			this.marker.setMap(null);
-	 		}
+				google.maps.event.clearInstanceListeners(this.marker);
+				this.marker.setMap(null);
+			}
 
-	 		Backbone.View.prototype.remove.apply(this, []);
+			Backbone.View.prototype.remove.apply(this, []);
 		}
 	});
 }());

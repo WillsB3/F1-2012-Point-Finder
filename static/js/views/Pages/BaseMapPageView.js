@@ -33,16 +33,38 @@
 
 
 		map: null,
-		template: '<div class="circuit-map"></div>',
+		template: '<div class="circuit-map-wrapper"><div class="circuit-map"></div><div class="map-overlay"></div></div>',
 
 		initialize: function () {
 			f1.log('BaseMapPageView:initalize');
 			f1.pages.BasePageView.prototype.initialize.apply(this);
 
+			_.bindAll(this, 'onEditingEnabled', 'onEditingDisabled');
+
 			// Setup map options
 			this.mapOptions = _.extend({}, this.baseMapOptions, this.options.mapOptions);
 
+			this.bindEvents();
+
 			return this;
+		},
+
+		bindEvents: function () {
+			f1.app.vent.on('map:editingEnabled', this.onEditingEnabled);
+			f1.app.vent.on('map:editingDisabled', this.onEditingDisabled);
+		},
+
+		unbindEvents: function () {
+			f1.app.vent.off('map:editingEnabled', this.onEditingEnabled);
+			f1.app.vent.off('map:editingDisabled', this.onEditingDisabled);
+		},
+
+		onEditingEnabled: function () {
+			this.$el.find('.map-overlay').addClass('is-enabled');
+		},
+
+		onEditingDisabled: function () {
+			this.$el.find('.map-overlay').removeClass('is-enabled');
 		},
 
 		getMapOptions: function () {
@@ -70,6 +92,8 @@
 
 		close: function () {
 			f1.log('BaseMapPageView:close');
+
+			this.unbindEvents();
 
 			// Remove all event handlers we might have bound above
 			google.maps.event.clearInstanceListeners(this.map);

@@ -7,7 +7,6 @@
 
 		events: {
 			'click .js-add-point': 'addPoint',
-			'click .js-edit-points': 'toggleEditMode'
 			// 'mouseenter .points-list__wrapper': 'expandPane',
 			// 'mouseleave .points-list__wrapper': 'collapsePane'
 		},
@@ -76,16 +75,6 @@
 			this.points.each(function(point) {
 				self.onPointAdded(point, self.points);
 			});
-		},
-
-		toggleEditMode: function () {
-			this.isEditing = !this.isEditing;
-
-			if (this.isEditing) {
-				this.enableEditing();
-			} else {
-				this.disableEditing();
-			}
 		},
 
 		remove: function () {
