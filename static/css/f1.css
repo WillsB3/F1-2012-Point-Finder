@@ -55,8 +55,8 @@ body {
   background-image: -ms-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
   background-image: -o-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
   background-image: radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
-  bottom: 0;
   display: block;
+  bottom: 0;
   opacity: 0;
   position: absolute;
   left: 0;
@@ -65,7 +65,13 @@ body {
   z-index: 50; }
 
 .map-overlay.is-enabled {
+  display: block; }
+
+.map-overlay.is-visible {
   opacity: 1; }
+
+.map-overlay.is-disabled {
+  display: none; }
 
 .circuit-selector {
   -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);

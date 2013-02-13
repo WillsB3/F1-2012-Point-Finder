@@ -1,4 +1,4 @@
-/*global $, f1, Backbone, _ */
+/*global $, f1, Backbone, _, google */
 (function () {
 	"use strict";
 	f1.pages.BaseMapPageView = f1.pages.BasePageView.extend({
@@ -34,6 +34,9 @@
 
 		map: null,
 		template: '<div class="circuit-map-wrapper"><div class="circuit-map"></div><div class="map-overlay"></div></div>',
+		timers: {
+			mapOverlay: null
+		},
 
 		initialize: function () {
 			f1.log('BaseMapPageView:initalize');
@@ -60,10 +63,34 @@
 		},
 
 		onEditingEnabled: function () {
-			this.$el.find('.map-overlay').addClass('is-enabled');
+			var self = this,
+				$overlay = this.$el.find('.map-overlay');
+
+			$overlay
+				.removeClass('is-disabled')
+				.addClass('is-enabled');
+
+			this.timers.mapOverlay = setTimeout(function () {
+				$overlay
+					.addClass('is-visible')
+					.removeClass('is-hidden');
+			}, 20);
 		},
 
 		onEditingDisabled: function () {
+			var self = this,
+				$overlay = this.$el.find('.map-overlay');
+
+			$overlay
+				.addClass('is-hidden')
+				.removeClass('is-visible');
+
+			this.timers.mapOverlay = setTimeout(function () {
+				$overlay
+					.removeClass('is-enabled')
+					.addClass('is-disabled');
+			}, 500);
+
 			this.$el.find('.map-overlay').removeClass('is-enabled');
 		},
 
