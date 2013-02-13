@@ -110,10 +110,6 @@
 			// Render the Google map
 			this.map = new google.maps.Map(this.$el.find('.circuit-map')[0], this.getMapOptions());
 
-			// google.maps.event.addListener(this.map, 'projection_changed', function (e) {
-			// 	self.onProjectionChanged();
-			// });
-
 			return this;
 		},
 
