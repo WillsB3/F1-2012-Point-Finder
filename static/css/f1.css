@@ -142,6 +142,8 @@ body {
     table-layout: fixed; }
     .points-list table thead th.points-table-header--edit {
       width: 74px; }
+    .points-list table thead th.points-table-header--select {
+      width: 28px; }
     .points-list table tbody td {
       line-height: 30px;
       overflow: hidden;
