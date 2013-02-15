@@ -33,7 +33,7 @@
 
 
 		map: null,
-		template: '<div class="circuit-map-wrapper"><div class="circuit-map"></div><div class="map-overlay"></div></div>',
+		template: '<div class="circuit-map-wrapper"><div class="circuit-map"></div><div class="map-overlay is-disabled"></div></div>',
 		timers: {
 			mapOverlay: null
 		},
