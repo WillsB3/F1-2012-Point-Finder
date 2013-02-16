@@ -23,11 +23,20 @@
 			$pointsTable: null
 		},
 
+		buttonStates: {
+			ENABLED: "enabled",
+			DISABLED: "disabled"
+		},
+
 		isEditing: false,
 
 		initialize: function () {
 			this.points = new f1.collections.PointList();
 			this.pointViews = {};
+
+			// When a point is selected or deselected we need to enable/disable
+			// the edit and remove buttons accordingly
+			this.listenTo(this.points, 'point:selected', this.updateButtons);
 
 			this.listenTo(this.points, 'add', this.onPointAdded);
 			this.listenTo(this.points, 'reset', this.onDataLoaded);
@@ -57,7 +66,32 @@
 		},
 
 		getSelectedPoints: function () {
-			
+			f1.warn('selected');
+			return _.filter(this.pointViews, function (pointView) {
+				return pointView.isSelected === true;
+			});
+		},
+
+		updateButtons: function () {
+			var selected = this.getSelectedPoints();
+
+			if (selected.length > 0) {
+				// Enable Edit/Remove buttons
+				this.changeButtonState(this.$el.find('.js-edit-points'), "enabled");
+				this.changeButtonState(this.$el.find('.js-remove-points'), "enabled");
+			} else {
+				// Disable Edit/Remove buttons
+				this.changeButtonState(this.$el.find('.js-edit-points'), "disabled");
+				this.changeButtonState(this.$el.find('.js-remove-points'), "disabled");
+			}
+		},
+
+		changeButtonState: function ($button, state) {
+			if (state === this.buttonStates.ENABLED) {
+				$button.removeClass('disabled');
+			} else if (state === this.buttonStates.DISABLED) {
+				$button.addClass('disabled');
+			}
 		},
 
 		expandPane: function () {
@@ -96,6 +130,8 @@
 			_.each(this.pointViews, function (pointView) {
 				pointView.remove();
 			});
+
+			Backbone.View.prototype.remove.apply(this, arguments);
 		},
 
 		render: function () {

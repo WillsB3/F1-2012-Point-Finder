@@ -66,6 +66,7 @@
 
 		togglePointSelected: function () {
 			this.isSelected = !this.isSelected;
+			this.point.trigger('point:selected');
 		},
 
 		render: function () {
@@ -122,7 +123,7 @@
 				this.marker.setMap(null);
 			}
 
-			Backbone.View.prototype.remove.apply(this, []);
+			Backbone.View.prototype.remove.apply(this, arguments);
 		}
 	});
 }());
