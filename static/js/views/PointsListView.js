@@ -1,4 +1,4 @@
-/*global $, Backbone, _ */
+/*global $, Backbone, _, f1 */
 (function () {
 	"use strict";
 	f1.views.PointsListView = Backbone.View.extend({
@@ -7,6 +7,8 @@
 
 		events: {
 			'click .js-add-point': 'addPoint',
+			'click .js-edit-points': 'editPoints',
+			'click .js-remove-points': 'removePoints'
 			// 'mouseenter .points-list__wrapper': 'expandPane',
 			// 'mouseleave .points-list__wrapper': 'collapsePane'
 		},
@@ -34,15 +36,28 @@
 		},
 
 		addPoint: function () {
-			var location = this.options.map.getCenter();
+			var location = this.options.map.getCenter(),
+				point;
 
 			// Create the model for this point
-			var point = new f1.models.Point({
+			point = new f1.models.Point({
 				world_lat: location.lat(),
 				world_lng: location.lng()
 			});
 
 			this.points.add(point);
+		},
+
+		editPoints: function () {
+
+		},
+
+		removePoints: function () {
+
+		},
+
+		getSelectedPoints: function () {
+			
 		},
 
 		expandPane: function () {
@@ -69,10 +84,10 @@
 			this.pointViews[model.cid] = pointView;
 		},
 
-		onDataLoaded: function() {
+		onDataLoaded: function () {
 			var self = this;
-			
-			this.points.each(function(point) {
+
+			this.points.each(function (point) {
 				self.onPointAdded(point, self.points);
 			});
 		},

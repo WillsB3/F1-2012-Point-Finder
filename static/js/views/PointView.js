@@ -7,11 +7,13 @@
 		editingTemplate: _.template($('#circuit-points-list-point-editing').html()),
 
 		events: {
-			'click .points-table-edit': 'enableEditing',
-			'click .points-table-done': 'disableEditing'
+			// 'click .points-table-edit': 'enableEditing',
+			// 'click .points-table-done': 'disableEditing',
+			'change .js-select-point': 'togglePointSelected'
 		},
 
 		isEditing: false,
+		isSelected: false,
 
 		initialize: function (options) {
 			_.bindAll(this, 'enableEditing', 'onMarkerMoved', 'onPointUpdated');
@@ -62,6 +64,10 @@
 			this.render();
 		},
 
+		togglePointSelected: function () {
+			this.isSelected = !this.isSelected;
+		},
+
 		render: function () {
 			var templateToUse = this.template;
 
@@ -77,6 +83,7 @@
 				game_x: this.point.get('game_x') || '-',
 				game_y: this.point.get('game_y') || '-',
 				point_cid: this.point.cid,
+				selected: this.isSelected,
 				world_lat: this.point.get('world_lat') || '-',
 				world_lng: this.point.get('world_lng') || '-'
 			}));
