@@ -39,6 +39,7 @@
 			this.listenTo(this.points, 'point:selected', this.updateButtons);
 
 			this.listenTo(this.points, 'add', this.onPointAdded);
+			this.listenTo(this.points, 'destroy', this.onPointDestroyed);
 			this.listenTo(this.points, 'reset', this.onDataLoaded);
 
 			return this;
@@ -62,7 +63,13 @@
 		},
 
 		removePoints: function () {
+			var pointsToRemove = this.getSelectedPoints();
 
+			_.each(pointsToRemove, function (pointView) {
+				// Remove the point model. The point view
+				// will be removed automatically.
+				pointView.point.destroy();
+			});
 		},
 
 		getSelectedPoints: function () {
@@ -116,6 +123,15 @@
 
 			// Store a reference to the point view		
 			this.pointViews[model.cid] = pointView;
+		},
+
+		onPointDestroyed: function (pointModel) {
+			// Remove the associated point view
+			var view = _.find(this.pointViews, function (pointView) {
+				return pointView.point === pointModel;
+			});
+
+			view.remove();
 		},
 
 		onDataLoaded: function () {
