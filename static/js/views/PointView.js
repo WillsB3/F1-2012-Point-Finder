@@ -22,7 +22,6 @@
 			this.template = options.template || this.template;
 
 			this.listenTo(this.point, 'change', this.onPointUpdated);
-			this.render();
 
 			return this;
 		},
@@ -47,11 +46,7 @@
 				'game_y': this.$el.find('[name=point-' + this.point.cid + '-y]').val()
 			});
 
-			// Save the point
-			this.point.save();
-
 			this.isEditing = false;
-
 			this.render();
 		},
 
@@ -107,11 +102,20 @@
 
 		renderMarker: function () {
 			f1.log("rendering marker");
+
+			var position = null;
+
+			if (this.point.get('world_lat') && this.point.get('world_lng')) {
+				position = new google.maps.LatLng(this.point.get('world_lat'), this.point.get('world_lng'));
+			} else {
+				position = this.map.getCenter();
+			}
+
 			this.marker = new google.maps.Marker({
 				animation: google.maps.Animation.DROP,
 				draggable: true,
 				map: this.map,
-				position: this.map.getCenter()
+				position: position
 			});
 
 			// Bind to google events to update the point model when
