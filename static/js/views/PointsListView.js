@@ -73,7 +73,6 @@
 		},
 
 		getSelectedPoints: function () {
-			f1.warn('selected');
 			return _.filter(this.pointViews, function (pointView) {
 				return pointView.isSelected === true;
 			});
@@ -127,11 +126,23 @@
 
 		onPointDestroyed: function (pointModel) {
 			// Remove the associated point view
-			var view = _.find(this.pointViews, function (pointView) {
-				return pointView.point === pointModel;
+			var view = null, viewIndex = null;
+
+			view = _.find(this.pointViews, function (pointView, index) {
+				if (pointView.point === pointModel) {
+					viewIndex = index;
+					return true
+				}
+
+				return false;
 			});
 
 			view.remove();
+
+			// Remove the view from the array of PointViews
+			delete this.pointViews[viewIndex];
+
+			this.updateButtons();
 		},
 
 		onDataLoaded: function () {
