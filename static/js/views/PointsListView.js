@@ -9,7 +9,8 @@
 			'click .js-add-point': 'addPoint',
 			'click .js-edit-points': 'editPoints',
 			'click .js-done-editing': 'doneEditing',
-			'click .js-remove-points': 'removePoints'
+			'click .js-remove-points': 'removePoints',
+			'click .js-save-all-points': 'savePoints'
 		},
 
 		template: $('#circuit-points-list').html(),
@@ -30,6 +31,8 @@
 		isEditing: false,
 
 		initialize: function () {
+			_.bindAll(this, 'savePoints');
+
 			this.points = new f1.collections.PointList();
 			this.pointViews = {};
 
@@ -93,6 +96,13 @@
 			});
 		},
 
+		savePoints: function () {
+			// Save all points
+			this.points.each(function (point) {
+				point.save();
+			});
+		},
+
 		getSelectedPoints: function () {
 			return _.filter(this.pointViews, function (pointView) {
 				return pointView.isSelected === true;
@@ -116,12 +126,12 @@
 		updateEditButton: function () {
 			if (this.isEditing) {
 				this.$el.find('.js-edit-points')
-					.addClass('points-list__section__done-editing-button btn-success js-done-editing')
+					.addClass('points-list__section__done-editing-button js-done-editing')
 					.removeClass('points-list__section__edit-points-button js-edit-points')
 					.text('Done');
 			} else {
 				this.$el.find('.js-done-editing')
-					.removeClass('points-list__section__done-editing-button btn-success js-done-editing')
+					.removeClass('points-list__section__done-editing-button js-done-editing')
 					.addClass('points-list__section__edit-points-button js-edit-points')
 					.text('Edit');
 			}
