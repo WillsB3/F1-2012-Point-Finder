@@ -9,8 +9,6 @@
 			'click .js-add-point': 'addPoint',
 			'click .js-edit-points': 'editPoints',
 			'click .js-remove-points': 'removePoints'
-			// 'mouseenter .points-list__wrapper': 'expandPane',
-			// 'mouseleave .points-list__wrapper': 'collapsePane'
 		},
 
 		template: $('#circuit-points-list').html(),
@@ -131,7 +129,7 @@
 			view = _.find(this.pointViews, function (pointView, index) {
 				if (pointView.point === pointModel) {
 					viewIndex = index;
-					return true
+					return true;
 				}
 
 				return false;
