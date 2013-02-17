@@ -1,5 +1,5 @@
 <script id="circuit-points-list-point" type="text/template">
-	<td><input type="radio" class="js-select-point" name="circuit-points" <% if (selected) { %>checked<% } %>></td>
+	<td><input type="checkbox" class="js-select-point" name="point-<%= point_cid %>" <% if (selected) { %>checked<% } %>></td>
 	<td class="js-point-is-editable--x"><%= game_x %></td><td class="js-point-is-editable--y"><%= game_y %></td>
 	<td><%= world_lat %></td><td><%= world_lng %></td>
 </script>

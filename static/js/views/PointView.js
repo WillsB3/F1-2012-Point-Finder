@@ -7,8 +7,6 @@
 		editingTemplate: _.template($('#circuit-points-list-point-editing').html()),
 
 		events: {
-			// 'click .points-table-edit': 'enableEditing',
-			// 'click .points-table-done': 'disableEditing',
 			'change .js-select-point': 'togglePointSelected'
 		},
 
@@ -64,7 +62,7 @@
 			this.render();
 		},
 
-		togglePointSelected: function () {
+		togglePointSelected: function (evnt) {
 			this.isSelected = !this.isSelected;
 			this.point.trigger('point:selected');
 		},
