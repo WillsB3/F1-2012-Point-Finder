@@ -8,6 +8,7 @@
 		events: {
 			'click .js-add-point': 'addPoint',
 			'click .js-edit-points': 'editPoints',
+			'click .js-done-editing': 'doneEditing',
 			'click .js-remove-points': 'removePoints'
 		},
 
@@ -56,8 +57,30 @@
 			this.points.add(point);
 		},
 
-		editPoints: function () {
+		doneEditing: function () {
+			var editedPoints = this.getSelectedPoints();
 
+			_.each(editedPoints, function (pointView) {
+				// Toggle the editing state for each 
+				// of the selected points
+				pointView.disableEditing();
+			});
+
+			this.isEditing = false;
+			this.updateEditButton();
+		},
+
+		editPoints: function () {
+			var pointsToEdit = this.getSelectedPoints();
+
+			_.each(pointsToEdit, function (pointView) {
+				// Toggle the editing state for each 
+				// of the selected points
+				pointView.enableEditing();
+			});
+
+			this.isEditing = true;
+			this.updateEditButton();
 		},
 
 		removePoints: function () {
@@ -87,6 +110,20 @@
 				// Disable Edit/Remove buttons
 				this.changeButtonState(this.$el.find('.js-edit-points'), "disabled");
 				this.changeButtonState(this.$el.find('.js-remove-points'), "disabled");
+			}
+		},
+
+		updateEditButton: function () {
+			if (this.isEditing) {
+				this.$el.find('.js-edit-points')
+					.addClass('points-list__section__done-editing-button btn-success js-done-editing')
+					.removeClass('points-list__section__edit-points-button js-edit-points')
+					.text('Done');
+			} else {
+				this.$el.find('.js-done-editing')
+					.removeClass('points-list__section__done-editing-button btn-success js-done-editing')
+					.addClass('points-list__section__edit-points-button js-edit-points')
+					.text('Edit');
 			}
 		},
 
