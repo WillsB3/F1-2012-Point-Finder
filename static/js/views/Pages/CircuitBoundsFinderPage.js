@@ -2,51 +2,30 @@
 (function () {
 	"use strict";
 	f1.pages.CircuitBoundsFinderPage = f1.pages.BaseCircuitPageView.extend({
-		points: {
-			codemasters: {},
-			gMaps: {}
-		},
 
-		templates: {
-			pointsList: $('#circuit-points-list').html()
-		},
+		pointsListView: null,
 
 		initialize: function () {
 			f1.log('CircuitBoundsFinderPage:initalize');
-			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
+			f1.pages.BaseCircuitPageView.prototype.initialize.apply(this);
 
 			return this;
 		},
 
 		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
+			
 			var self = this;
+			f1.pages.BaseCircuitPageView.prototype.render.apply(this);
 
-			f1.pages.BaseMapPageView.prototype.render.apply(this);
-
-			// Attach the click handler
-			google.maps.event.addListener(this.map, 'click', function (e) {
-				self.placeMarker(e);
-			});
-			debugger
-			this.$el.append(this.templates.pointsList);
-
-			return this;
-		},
-
-		placeMarker: function (evnt) {
-			var position = evnt.latLng;
-
-			f1.log('Placing marker at position:');
-			f1.log(position);
-
-			f1.log('World coordinates:');
-			f1.log(evnt.ga);
-
-			var marker = new google.maps.Marker({
-				position: position,
+			this.pointsListView = new f1.views.PointsListView({
 				map: this.map
 			});
+
+			// Render the points list view
+			this.$el.append(this.pointsListView.render().$el);
+
+			return this;
 		}
 	});
 }());

@@ -3,7 +3,7 @@
 	"use strict";
 	f1.pages.BaseCircuitPageView = f1.pages.BaseMapPageView.extend({
 		options: {
-			circuit: 'melbourne'
+			circuit: f1.circuits[0]
 		},
 
 		circuit: null,
@@ -13,13 +13,13 @@
 		initialize: function () {
 			var self = this;
 
-			_.bindAll(this, 'onProjectionChanged');
+			_.bindAll(this, 'onProjectionChanged', 'setCircuit');
 
 			f1.log('BaseCircuitPageView:initalize');
 			f1.pages.BaseMapPageView.prototype.initialize.apply(this);
 
 			// Set the initial circuit
-			this.setCircuit(this.options.circuit);
+			this.setCircuit(this.options.circuit, { silent: true });
 
 			// Create the circuit tile opacity slider
 			this.circuitMapOpacitySlider = new f1.views.googleMapsOpacitySliderView({
@@ -31,7 +31,17 @@
 				map: null // We don't have the map until after Render of BaseMapPageView
 			});
 
+			this.on('map:ready', this.onMapReady);
+
 			return this;
+		},
+
+		bindEvents: function () {
+			f1.pages.BaseMapPageView.prototype.bindEvents.apply(this, arguments);
+		},
+
+		unbindEvents: function () {
+			f1.pages.BaseMapPageView.prototype.unbindEvents.apply(this, arguments);
 		},
 
 		createMapType: function () {
@@ -179,7 +189,29 @@
 
 		onCircuitChanged: function (newCircuit) {
 			f1.log('BaseCircuitPageView:onCircuitChanged');
-			this.circuit = newCircuit;
+
+			var circuit = newCircuit,
+				latLng,
+				zoomLevel;
+
+			// Create a google LatLng object at the circuits center
+			latLng = new google.maps.LatLng(circuit.mapCenter.lat, circuit.mapCenter.lng);
+
+			// Center the map on the selected circuits location
+			this.map.panTo(latLng);
+
+			// Zoom to roughly the correct level
+			zoomLevel = this.circuit.mapCenter.zoom || 16;
+			this.map.setZoom(zoomLevel);
+
+			if (circuit.maxZoom) {
+				this.map.setOptions({ maxZoom: circuit.maxZoom });
+			}
+		},
+
+		onMapReady: function () {
+			this.off('map:ready', this.onMapReady);
+			this.onCircuitChanged(this.circuit);
 		},
 
 		onProjectionChanged: function () {
@@ -187,6 +219,8 @@
 				if (!_.isUndefined(this.map.getProjection())) {
 					this.circuitMapType = this.createMapType();
 					this.map.overlayMapTypes.push(this.circuitMapType);
+
+					this.trigger('map:ready');
 				}
 			}
 		},
@@ -208,19 +242,8 @@
 			f1.log('BaseCircuitPageView:render');
 			f1.pages.BaseMapPageView.prototype.render.apply(this);
 
-			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
-			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '50px'));
-			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '50px'));
-			// this.map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(this.createDummyControl('10%', '45%'));
-			// this.map.controls[google.maps.ControlPosition.RIGHT_CENTER].push(this.createDummyControl('10%', '100%'));
-			// this.map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(this.createDummyControl('100%', '10%'));
-
-			// Add the custom invisible controls to stop the Map controls appearing behind the header
-			// this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('2000px', '52px'));
-			// this.map.controls[google.maps.ControlPosition.TOP_CENTER].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('100%', '55px'));
-			// this.map.controls[google.maps.ControlPosition.LEFT_TOP].push(this.createDummyControl('100%', '55px'));
+			this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(this.createDummyControl('20px', '60px'));
+			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '60px'));
 
 			google.maps.event.addListener(this.map, 'projection_changed', function () {
 				self.onProjectionChanged();
@@ -232,7 +255,7 @@
 				circuit: this.circuit
 			});
 
-			this.circuitSelector.on('circuit:changed', this.onCircuitChanged);
+			this.circuitSelector.on('circuit:changed', this.setCircuit);
 			this.$el.append(this.circuitSelector.render().$el);
 
 			// Provide the opacity slider access to our map now it's available
@@ -244,10 +267,14 @@
 			return this;
 		},
 
-		setCircuit: function (circuitId) {
-			this.circuit = _.find(f1.circuits, function (circuit) {
-				return circuit.id === circuitId;
-			});
+		setCircuit: function (circuit, options) {
+			var opts = options || {};
+			
+			this.circuit = circuit;
+
+			if (!opts.silent) {
+				this.onCircuitChanged.apply(this, [this.circuit]);
+			}
 		},
 
 		close: function () {

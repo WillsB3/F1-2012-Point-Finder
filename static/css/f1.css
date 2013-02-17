@@ -26,27 +26,62 @@ body {
   top: 0;
   z-index: 10; }
 
-.circuit-map {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+.circuit-map-wrapper {
   height: 100%;
   width: 100%; }
-  .circuit-map label {
-    display: inline !important;
-    width: auto !important; }
-  .circuit-map img {
-    max-width: none !important; }
+  .circuit-map-wrapper .circuit-map {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 100%;
+    width: 100%; }
+    .circuit-map-wrapper .circuit-map label {
+      display: inline !important;
+      width: auto !important; }
+    .circuit-map-wrapper .circuit-map img {
+      max-width: none !important; }
+
+.map-overlay {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -ms-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+  background-color: transparent;
+  background-image: -webkit-gradient(radial, center center, 0, center center, 460, color-stop(0%, rgba(0, 0, 0, 0.3)), color-stop(100%, rgba(0, 0, 0, 0.77)));
+  background-image: -webkit-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
+  background-image: -moz-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
+  background-image: -ms-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
+  background-image: -o-radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
+  background-image: radial-gradient(50% 50%, circle cover, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.77) 100%);
+  display: block;
+  bottom: 0;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 50; }
+
+.map-overlay.is-enabled {
+  display: block; }
+
+.map-overlay.is-visible {
+  opacity: 1; }
+
+.map-overlay.is-disabled {
+  display: none; }
 
 .circuit-selector {
+  -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
   background-color: rgba(255, 255, 255, 0.8);
   top: 0px;
   padding: 10px 45px;
   position: absolute;
   width: 100%;
-  z-index: 15; }
+  z-index: 100; }
   .circuit-selector label {
     display: inline-block;
     margin: 0 0.5em 0 0; }
@@ -77,6 +112,76 @@ body {
     display: table;
     clear: both; }
 
+.points-list {
+  -webkit-transition: all 100ms ease-in-out;
+  -moz-transition: all 100ms ease-in-out;
+  -ms-transition: all 100ms ease-in-out;
+  -o-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
+  bottom: 25px;
+  max-height: 100%;
+  overflow: auto;
+  overflow-y: auto;
+  pointer-events: none;
+  position: absolute;
+  right: 6px;
+  top: 120px;
+  width: 420px;
+  z-index: 100; }
+  .points-list .points-list__wrapper {
+    -webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.27);
+    background-color: rgba(255, 255, 255, 0.8);
+    overflow: auto;
+    overflow-y: auto;
+    padding: 10px;
+    pointer-events: auto; }
+  .points-list table {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 10px;
+    table-layout: fixed; }
+    .points-list table thead th {
+      text-align: center; }
+    .points-list table thead th.points-table-header--edit {
+      width: 74px; }
+    .points-list table thead th.points-table-header--select {
+      width: 28px; }
+    .points-list table tbody td {
+      line-height: 30px;
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis; }
+      .points-list table tbody td .points-table-edit {
+        margin: 0 0 0 4px; }
+    .points-list table input {
+      height: 2em;
+      padding: 12px 5px;
+      margin-bottom: 0;
+      width: 100%; }
+  .points-list .table-striped tbody > tr:nth-child(even) > td, .points-list .table-striped tbody > tr:nth-child(even) > th {
+    background-color: #f0f0f0; }
+  .points-list tfoot td {
+    color: #777;
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: center; }
+  .points-list .divider {
+    border-top: 1px solid #bbbbbb;
+    border-bottom: 1px solid white; }
+  .points-list .points-list__section__add-point-button {
+    margin-bottom: 10px;
+    width: 100%; }
+  .points-list .points-list__section__save-points-button {
+    width: 100%; }
+  .points-list .points-list__section__edit-points-button {
+    margin-right: 6px;
+    width: 195px; }
+  .points-list .points-list__section__done-editing-button {
+    margin-right: 6px;
+    width: 195px; }
+  .points-list .points-list__section__remove-points-button {
+    width: 195px; }
+
 .pac-container {
   box-sizing: content-box;
   border-bottom-left-radius: 5px;
@@ -105,14 +210,14 @@ body {
 .slider {
   cursor: pointer; }
   .slider.slider--tile-opacity-slider {
-    background: transparent url("../../img/opacity-slider.png") 3px 0 no-repeat;
+    background: transparent url("static/img/opacity-slider.png") 3px 0 no-repeat;
     height: 19px;
     margin-right: 6px;
     padding: 0 3px;
     position: relative;
     width: 68px; }
     .slider.slider--tile-opacity-slider .slider__handle {
-      background: transparent url("../../img/opacity-slider.png") top right no-repeat;
+      background: transparent url("static/img/opacity-slider.png") top right no-repeat;
       cursor: pointer;
       display: block;
       height: 20px;
@@ -121,3 +226,27 @@ body {
       position: absolute;
       top: 0;
       width: 14px; }
+
+.notifications {
+  left: 0;
+  margin-top: 64px;
+  top: 0;
+  text-align: center;
+  width: 100%; }
+  .notifications .notification {
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 100ms ease-in-out;
+    -moz-transition: opacity 100ms ease-in-out;
+    -ms-transition: opacity 100ms ease-in-out;
+    -o-transition: opacity 100ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
+    display: inline-block;
+    opacity: 1;
+    position: relative;
+    max-width: 700px;
+    text-align: left;
+    width: 75%;
+    z-index: 1000; }
+    .notifications .notification.is-invisible {
+      opacity: 0; }

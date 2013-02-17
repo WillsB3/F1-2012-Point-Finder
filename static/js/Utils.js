@@ -7,7 +7,7 @@ var f1;
 	f1 = {
 		debugMode: true,
 		pageStartTime: new Date().getTime(),
-		production: false,
+		production: null, // Will be over-ridden by Django
 		tileServer: {
 			production: 'http://tiles.f12012pf.willsbithrey.com/',
 			development: 'http://tiles.dev/'
@@ -55,6 +55,7 @@ var f1;
 					lng: 144.97056484222412,
 					zoom: 16
 				},
+				maxZoom: 19,
 				round: 1
 			},
 
@@ -577,6 +578,8 @@ var f1;
 			}
 		},
 
+		collections: {},
+		models: {},
 		maps: {},
 		pages: {},
 		views: {}

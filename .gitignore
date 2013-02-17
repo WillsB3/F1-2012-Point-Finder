@@ -45,7 +45,11 @@ Build/*
 /Build/css/bootstrap-responsive.css
 /Build/css/app.css
 /Build/Icon
+.sass-cache/
 tmp*
 *swp
 *swo
 *py[co]
+
+/nginx/
+/nginx.conf
