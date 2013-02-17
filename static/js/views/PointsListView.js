@@ -101,6 +101,11 @@
 			this.points.each(function (point) {
 				point.save();
 			});
+
+			f1.app.vent.trigger('notify', {
+				contents: '<strong>Success</strong> Points saved successfully',
+				type: 'alert-success'
+			});
 		},
 
 		getSelectedPoints: function () {

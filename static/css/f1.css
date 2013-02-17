@@ -226,3 +226,27 @@ body {
       position: absolute;
       top: 0;
       width: 14px; }
+
+.notifications {
+  left: 0;
+  margin-top: 64px;
+  top: 0;
+  text-align: center;
+  width: 100%; }
+  .notifications .notification {
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
+    -webkit-transition: opacity 100ms ease-in-out;
+    -moz-transition: opacity 100ms ease-in-out;
+    -ms-transition: opacity 100ms ease-in-out;
+    -o-transition: opacity 100ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
+    display: inline-block;
+    opacity: 1;
+    position: relative;
+    max-width: 700px;
+    text-align: left;
+    width: 75%;
+    z-index: 1000; }
+    .notifications .notification.is-invisible {
+      opacity: 0; }

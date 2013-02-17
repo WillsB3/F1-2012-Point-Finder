@@ -11,8 +11,11 @@
 		templateCache: null,
 
 		elements: {
-			$contentPane: $('#app')
+			$contentPane: $('#app'),
+			$notifications: $('.js-notifications')
 		},
+
+		notifications: {},
 
 		initialize: function () {
 			f1.log('Application:initalize');
@@ -31,7 +34,20 @@
 				}
 			});
 
+			this.listenTo(this.vent, 'notify', this.onNotify);
+
 			return this;
+		},
+
+		onNotify: function (options) {
+			options.id = _.uniqueId();
+
+			var notification = new f1.views.NotificationView(options);
+
+			this.notifications[options.id] = notification;
+			this.elements.$notifications.append(notification.render().$el);
+
+			notification.show();
 		},
 
 		showPage: function (view, options) {
@@ -41,7 +57,7 @@
 
 			if (this.currentView) {
 				f1.info('Application: Closing the current view');
-				
+
 				if (this.currentView.circuit) {
 					circuit = this.currentView.circuit;
 				}
