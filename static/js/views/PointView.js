@@ -63,8 +63,12 @@
 		},
 
 		togglePointSelected: function (evnt) {
-			this.isSelected = !this.isSelected;
-			this.point.trigger('point:selected');
+			if (!this.isEditing) {
+				this.isSelected = !this.isSelected;
+				this.point.trigger('point:selected');
+			} else {
+				$(evnt.currentTarget).prop('checked', true);
+			}
 		},
 
 		render: function () {
