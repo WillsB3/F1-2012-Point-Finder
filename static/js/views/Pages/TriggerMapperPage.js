@@ -44,8 +44,13 @@
 		},
 
 		deleteNode: function (mev) {
-			if (mev.vertex && this.getPath().getLength() > 3) {
+			if (mev.vertex !== null && this.getPath().getLength() > 3) {
 				this.getPath().removeAt(mev.vertex);
+			} else {
+				f1.app.vent.trigger('notify', {
+					contents: '<strong>Error</strong> Polygon must have at least 3 points',
+					type: 'alert-error'
+				});
 			}
 		},
 

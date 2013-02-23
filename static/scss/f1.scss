@@ -300,9 +300,10 @@ body {
 	.notification {
 		@include box-shadow(0 2px 8px 0 rgba(0, 0, 0, 0.3));
 		@include transition (opacity 100ms ease-in-out);
-		display: inline-block;
+		display: block;
 		opacity: 1;
 		position: relative;
+		margin: 14px auto 0 auto;
 		max-width: 700px;
 		text-align: left;
 		width: 75%;

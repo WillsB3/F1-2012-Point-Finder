@@ -40,11 +40,11 @@
 		},
 
 		onNotify: function (options) {
-			options.id = _.uniqueId();
+			options.notification_id = _.uniqueId();
 
 			var notification = new f1.views.NotificationView(options);
 
-			this.notifications[options.id] = notification;
+			this.notifications[options.notification_id] = notification;
 			this.elements.$notifications.append(notification.render().$el);
 
 			notification.show();

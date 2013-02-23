@@ -241,9 +241,10 @@ body {
     -ms-transition: opacity 100ms ease-in-out;
     -o-transition: opacity 100ms ease-in-out;
     transition: opacity 100ms ease-in-out;
-    display: inline-block;
+    display: block;
     opacity: 1;
     position: relative;
+    margin: 14px auto 0 auto;
     max-width: 700px;
     text-align: left;
     width: 75%;
