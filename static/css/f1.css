@@ -167,20 +167,21 @@ body {
     text-align: center; }
   .points-list .divider {
     border-top: 1px solid #bbbbbb;
-    border-bottom: 1px solid white; }
-  .points-list .points-list__section__add-point-button {
-    margin-bottom: 10px;
-    width: 100%; }
-  .points-list .points-list__section__save-points-button {
-    width: 100%; }
-  .points-list .points-list__section__edit-points-button {
-    margin-right: 6px;
-    width: 195px; }
+    border-bottom: 1px solid white;
+    margin: 10px 0; }
+  .points-list .points-list__section__add-point-button,
+  .points-list .points-list__section__edit-points-button,
+  .points-list .points-list__section__remove-points-button,
   .points-list .points-list__section__done-editing-button {
-    margin-right: 6px;
-    width: 195px; }
+    margin-right: 7px;
+    width: 126px; }
   .points-list .points-list__section__remove-points-button {
-    width: 195px; }
+    margin-right: 0px; }
+  .points-list .points-list__section__save-points-button {
+    margin-bottom: 10px; }
+  .points-list .points-list__section__save-points-button,
+  .points-list .points-list__section__calibrate-button {
+    width: 100%; }
 
 .pac-container {
   box-sizing: content-box;

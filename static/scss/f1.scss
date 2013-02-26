@@ -206,29 +206,28 @@ body {
 	.divider {
 		border-top: 1px solid #bbb;
 		border-bottom: 1px solid #fff;
+		margin: 10px 0;
 	}
 
-	.points-list__section__add-point-button {
-		margin-bottom: 10px;
-		width: 100%;
-	}
-
-	.points-list__section__save-points-button {
-		width: 100%
-	}
-
-	.points-list__section__edit-points-button {
-		margin-right: 6px;
-		width: 195px;
-	}
-
+	.points-list__section__add-point-button,
+	.points-list__section__edit-points-button,
+	.points-list__section__remove-points-button,
 	.points-list__section__done-editing-button {
-		margin-right: 6px;
-		width: 195px;
+		margin-right: 7px;
+		width: 126px;
 	}
 
 	.points-list__section__remove-points-button {
-		width: 195px;
+		margin-right: 0px;
+	}
+
+	.points-list__section__save-points-button {
+		margin-bottom: 10px;
+	}
+
+	.points-list__section__save-points-button,
+	.points-list__section__calibrate-button {
+		width: 100%
 	}
 }
 
