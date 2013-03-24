@@ -89,7 +89,7 @@
 		},
 
 		close: function () {
-			f1.pages.BaseCircuitPageView.close.apply(this, arguments);
+			f1.pages.BaseCircuitPageView.prototype.close.apply(this, arguments);
 		}
 	});
 }());
