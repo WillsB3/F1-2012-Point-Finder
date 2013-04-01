@@ -84,6 +84,8 @@
 				selected: this.isSelected,
 				world_lat: this.point.get('world_lat') || '-',
 				world_lng: this.point.get('world_lng') || '-'
+				world_x: this.point.get('world_lng') || '-'
+				world_y: this.point.get('world_lng') || '-'
 			}));
 
 			return this;

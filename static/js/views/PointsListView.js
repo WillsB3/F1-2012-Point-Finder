@@ -1,4 +1,4 @@
-/*global $, Backbone, _, f1 */
+/*global $, Backbone, _, f1, google */
 (function () {
 	"use strict";
 	f1.views.PointsListView = Backbone.View.extend({
@@ -10,7 +10,8 @@
 			'click .js-edit-points': 'editPoints',
 			'click .js-done-editing': 'doneEditing',
 			'click .js-remove-points': 'removePoints',
-			'click .js-save-all-points': 'savePoints'
+			'click .js-save-all-points': 'savePoints',
+			'click .js-calibrate-points': 'calibrate'
 		},
 
 		template: $('#circuit-points-list').html(),
@@ -58,6 +59,142 @@
 			});
 
 			this.points.add(point);
+		},
+
+		calibrate: function () {
+			var scale  = {x: null, y: null},
+				offset = {x: null, y: null},
+				self = this;
+
+			// Stage 1 - Scale computation
+			// ------------
+			// Compute the difference in scale between the game 
+			// coordinates and the points corresponding world coordinates
+			function computeScale() {
+				var averageScale = { x: null, y: null },
+					scales = {
+						x: [],
+						y: []
+					};
+
+				self.points.each(function (point, index) {
+					debugger;
+					var pointLatLng,
+						pointGameCoords = { x: null, y: null },
+						pointWorldCoords = { x: null, y: null },
+						map = self.options.map;
+
+					pointGameCoords = {
+						x: point.get('game_x'),
+						y: point.get('game_y')
+					};
+
+					pointLatLng = new google.maps.LatLng(point.get('world_lat'), point.get('world_lng'));
+					pointWorldCoords = map.getProjection().fromLatLngToPoint(pointLatLng);
+
+					// Compare against all other points
+					self.points.each(function (otherPoint, otherIndex) {
+
+						// Check points are not equal
+						if (point.cid === otherPoint.cid) {
+							return;
+						}
+
+						var gameDelta = { x: null, y: null },
+							otherPointLatLng,
+							otherPointGameCoords,
+							otherPointWorldCoords,
+							scale = { x: null, y: null },
+							worldDelta = { x: null, y: null };
+
+						otherPointGameCoords = {
+							x: otherPoint.get('game_x'),
+							y: otherPoint.get('game_y')
+						};
+
+						otherPointLatLng = new google.maps.LatLng(otherPoint.get('world_lat'), otherPoint.get('world_lng'));
+						otherPointWorldCoords = map.getProjection().fromLatLngToPoint(otherPointLatLng);
+
+						// Calculate the distance between world coordinates
+						worldDelta.x = pointWorldCoords.x - otherPointWorldCoords.x;
+						worldDelta.y = pointWorldCoords.y - otherPointWorldCoords.y;
+
+						// Calculate the distance between game coordinates
+						gameDelta.x =  pointGameCoords.x - otherPointGameCoords.x;
+						gameDelta.y =  pointGameCoords.y - otherPointGameCoords.y;
+
+						// Calculate the scale based on this point
+						scale.x = gameDelta.x / worldDelta.x;
+						scale.y = gameDelta.y / worldDelta.y;
+
+						// Store the computed differences
+						scales.x.push(scale.x);
+						scales.y.push(scale.y);
+					});
+				});
+
+				averageScale.x = _.reduce(scales.x, function (memo, scale) { return memo + scale; }) / scales.x.length;
+				averageScale.y = _.reduce(scales.y, function (memo, scale) { return memo + scale; }) / scales.y.length;
+
+				f1.log('Average scale: ' + averageScale.x + ' ' + averageScale.y);
+
+				return averageScale;
+			}
+
+			function computeOffset() {
+				// Stage 2 - Offset computation
+				// ------------
+				// Compute the average difference between the added game
+				// coordinates and their corresponding world coordinates
+
+				var averages = { x: 0, y: 0 },
+					deltas = [];
+
+				// Iterate through all points and compute the difference between
+				// game coordinated and world coordinates
+				self.points.each(function (point, index) {
+					var game = { x: null, y: null},
+						delta = { x: null, y: null },
+						latLng = null,
+						world = { x: null, y: null };
+
+					game.x = point.get('game_x');
+					game.y = point.get('game_y');
+
+					latLng = new google.maps.LatLng(point.get('world_lat'), point.get('world_lng'));
+					world = self.options.map.getProjection().fromLatLngToPoint(latLng);
+
+					// debugger;
+					delta.x = world.x - game.x;
+					delta.y = world.y - game.y;
+					f1.log('Point at ' + index + ': delta-x = ' + delta.x + ' delta-y = ' + delta.y);
+					deltas.push(delta);
+
+					averages.x += delta.x;
+					averages.y += delta.y;
+				});
+
+				averages.x = averages.x / deltas.length;
+				averages.y = averages.y / deltas.length;
+				f1.log('Average delta {x: ' + averages.x + ', y: ' + averages.y + '}');
+
+				return averages;
+			}
+
+			var scale = computeScale();
+			var offset = computeOffset();
+
+			debugger;
+			var listener = google.maps.event.addListener(self.options.map, 'mousemove', function (evnt) {
+				debugger;
+				var world_coords = self.options.map.getProjection().fromLatLngToPoint(evnt.latLng);
+				var game_coords = {
+					x: (world_coords.x - offset.x) / scale.x
+				};
+
+				f1.log('game x: ' + game_coords.x);
+				// f1.log('world x: ' + world_coords.x + 'world y: ' + world_coords.y);
+			});
 		},
 
 		doneEditing: function () {

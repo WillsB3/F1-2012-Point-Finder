@@ -14,7 +14,7 @@
 
 		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
-			
+
 			var self = this;
 			f1.pages.BaseCircuitPageView.prototype.render.apply(this);
 
