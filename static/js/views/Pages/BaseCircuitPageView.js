@@ -32,17 +32,21 @@
 				map: null // We don't have the map until after Render of BaseMapPageView
 			});
 
-			this.on('map:ready', this.onMapReady);
+			this.bindEvents();
 
 			return this;
 		},
 
 		bindEvents: function () {
 			f1.pages.BaseMapPageView.prototype.bindEvents.apply(this, arguments);
+
+			this.listenTo(this, 'map:ready', this.onMapReady);
 		},
 
 		unbindEvents: function () {
 			f1.pages.BaseMapPageView.prototype.unbindEvents.apply(this, arguments);
+
+			this.stopListening(this, 'map:ready', this.onMapReady);
 		},
 
 		createMapType: function () {
@@ -248,6 +252,7 @@
 			this.map.controls[google.maps.ControlPosition.RIGHT_TOP].push(this.createDummyControl('20px', '60px'));
 
 			google.maps.event.addListener(this.map, 'projection_changed', function () {
+				console.warn('Projection Changed');
 				self.onProjectionChanged();
 			});
 
@@ -284,8 +289,9 @@
 
 			this.circuit = null;
 
-			this.circuitSelector.off('circuit:changed');
-			this.circuitSelector.close();
+			this.circuitSelector.off();
+			this.circuitSelector.remove();
+			this.circuitMapOpacitySlider.remove();
 
 			f1.pages.BaseMapPageView.prototype.close.apply(this);
 		}

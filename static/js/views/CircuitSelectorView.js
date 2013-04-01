@@ -128,9 +128,11 @@
 			this.mapsApiListeners.searchBox = google.maps.event.addListener(this.searchBox, 'places_changed', this.searchSuggestionSelected);
 		},
 
-		close: function () {
+		remove: function () {
 			google.maps.event.removeListener(this.mapsApiListeners.searchBox);
 			$('body').off('click', this.onSearchInputBlur);
+
+			Backbone.View.prototype.remove.apply(this, arguments);
 		}
 	});
 }());

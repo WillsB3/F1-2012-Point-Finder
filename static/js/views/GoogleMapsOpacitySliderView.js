@@ -87,9 +87,9 @@
 			return this;
 		},
 
-		destroy: function () {
+		remove: function () {
 			this.unbindEvents();
-			this.remove();
+			Backbone.View.prototype.remove.apply(this, arguments);
 		}
 	});
 }());

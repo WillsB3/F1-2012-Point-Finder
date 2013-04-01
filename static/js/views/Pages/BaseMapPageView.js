@@ -117,9 +117,12 @@
 			f1.log('BaseMapPageView:close');
 
 			this.unbindEvents();
-
 			// Remove all event handlers we might have bound above
 			google.maps.event.clearInstanceListeners(this.map);
+
+			delete this.map;
+
+			f1.pages.BasePageView.prototype.close.apply(this, arguments);
 		}
 	});
 }());
