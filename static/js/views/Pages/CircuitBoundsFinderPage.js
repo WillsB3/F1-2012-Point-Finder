@@ -15,17 +15,24 @@
 		render: function () {
 			f1.log('CircuitBoundsFinderPage:render');
 
-			var self = this;
 			f1.pages.BaseCircuitPageView.prototype.render.apply(this);
 
+			if (this.mapReady) {
+				this.renderPointsList();
+			} else {
+				this.listenTo(this, 'map:ready', this.renderPointsList);
+			}
+
+			return this;
+		},
+
+		renderPointsList: function () {
 			this.pointsListView = new f1.views.PointsListView({
 				map: this.map
 			});
 
 			// Render the points list view
 			this.$el.append(this.pointsListView.render().$el);
-
-			return this;
 		}
 	});
 }());

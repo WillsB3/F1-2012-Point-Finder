@@ -9,6 +9,7 @@
 		circuit: null,
 		circuitMapType: null,
 		circuitMapOpacitySlider: null,
+		mapReady: false,
 
 		initialize: function () {
 			var self = this;
@@ -220,6 +221,7 @@
 					this.circuitMapType = this.createMapType();
 					this.map.overlayMapTypes.push(this.circuitMapType);
 
+					this.mapReady = true;
 					this.trigger('map:ready');
 				}
 			}

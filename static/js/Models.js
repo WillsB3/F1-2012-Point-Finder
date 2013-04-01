@@ -15,8 +15,9 @@
 
 		initialize: function () {
 			f1.log('Point::initialize');
-		}
 
+		}
+		
 	});
 
 }());

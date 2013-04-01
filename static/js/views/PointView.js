@@ -67,8 +67,10 @@
 		},
 
 		render: function () {
-			var templateToUse = this.template;
-
+			var latLng = new google.maps.LatLng(this.point.get('world_lat'), this.point.get('world_lng')),
+				templateToUse = this.template,
+				world = this.options.map.getProjection().fromLatLngToPoint(latLng);
+			
 			if (!this.marker) {
 				this.renderMarker();
 			}
@@ -83,9 +85,9 @@
 				point_cid: this.point.cid,
 				selected: this.isSelected,
 				world_lat: this.point.get('world_lat') || '-',
-				world_lng: this.point.get('world_lng') || '-'
-				world_x: this.point.get('world_lng') || '-'
-				world_y: this.point.get('world_lng') || '-'
+				world_lng: this.point.get('world_lng') || '-',
+				world_x: world.x || '-',
+				world_y: world.y || '-'
 			}));
 
 			return this;
