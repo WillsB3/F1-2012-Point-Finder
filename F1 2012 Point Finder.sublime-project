@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder"
+			"path": "/Users/Wills/Sites/Projects/Personal/F1 2012 Point Finder",
+			"folder_exclude_patterns": ["static/css", ".sass-cache"]
 		}
 	],
 	"settings":
