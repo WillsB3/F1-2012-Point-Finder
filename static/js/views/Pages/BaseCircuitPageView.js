@@ -256,6 +256,16 @@
 				self.onProjectionChanged();
 			});
 
+			// Manually call the projection changed callback, 
+			// because of a bug in Google Maps API which means
+			// that there is a memory leak when destroying and 
+			// initialising a new map. This is only a workaround
+			// as it turns out even when we switch pages in Backbone
+			// and we try to destroy the pages map, the map persists
+			// between pages and is unintentionally reused.
+			// See https://code.google.com/p/gmaps-api-issues/issues/detail?id=3803
+			this.onProjectionChanged();
+
 			// Create and render a circuit selector
 			this.circuitSelector = new f1.views.CircuitSelector({
 				map: this.map,
